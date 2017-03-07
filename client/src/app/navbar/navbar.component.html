@@ -1,3 +1,7 @@
-<p>
-  navbar works!
-</p>
+<nav class="navbar">
+  <a md-button routerLink=".">DASHBOARD</a>
+  <a md-button routerLink="." [disabled]="true">RESULTS ENTRY</a>
+  <a md-button routerLink="." [disabled]="true">SETUP</a>
+  <span class="fill-remaining-space"></span>
+  <a md-button routerLink=".">LOGIN</a>
+</nav>

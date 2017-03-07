@@ -13,5 +13,5 @@ app.use( morgan('dev') );
 registerRoutes(app);
 
 app.listen(3000, () => {
-  console.log('the music is on port 3000');
+  console.log('the magic is on port 3000');
 });
