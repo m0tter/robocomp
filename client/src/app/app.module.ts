@@ -9,12 +9,18 @@ import { AppRoutes }  from './app.routes';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { LoginComponent } from './login/login.component';
+import { ResultsEntryComponent } from './results-entry/results-entry.component';
+import { SetupComponent } from './setup/setup.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
-    NavbarComponent
+    NavbarComponent,
+    LoginComponent,
+    ResultsEntryComponent,
+    SetupComponent
   ],
   imports: [
     BrowserModule,
