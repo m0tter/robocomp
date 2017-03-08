@@ -13,12 +13,12 @@ interface SideNavItem { name: string; route:string; }
 })
 export class SideNavComponent implements OnInit {
   navItems: SideNavItem[];
+  public visible = false;
 
   constructor( private navService: NavService ) { }
 
   ngOnInit() {
-    this.navService.navItems.subscribe(items => { this.navItems = items });
-    // this.navItems = this.navService.navItems;
+    this.navService.sideNav = this;
   }
 
   errHandler(error: any) { 

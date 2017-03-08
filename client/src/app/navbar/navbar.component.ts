@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { NavService } from '../services/nav.service';
+
+interface SideNavItem { name: string; route: string; }
 
 @Component({
   selector: 'app-navbar',
@@ -7,7 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  constructor( private navService: NavService ) { }
+
+  btnDashboard_Clicked(): void {
+  }
+
+  btnLogin_Clicked(): void {
+    
+  }
 
   ngOnInit() {
   }

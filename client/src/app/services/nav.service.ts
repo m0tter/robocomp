@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-
+import { SideNavComponent } from '../side-nav/side-nav.component';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/interval';
 import 'rxjs/add/operator/map';
@@ -9,20 +9,23 @@ interface SideNavItem { name: string; route:string; }
 @Injectable()
 export class NavService {
   public navItems: Observable<Array<SideNavItem>>;
-  private items: SideNavItem[] = [
-    {
-      name: 'item1',
-      route: 'route1',
-    },
-    {
-      name: 'item2',
-      route: 'route2'
-    }
-  ];
+  public sideNav: SideNavComponent;
 
   constructor() { 
-    this.navItems = Observable.of(this.items);
-    console.log('navitems' + this.navItems);
+    this.setNavItems([]);
+   }
+
+  hide(): void {
+    if(this.sideNav) this.sideNav.visible = false;
+  }
+
+  show(): void {
+    if(this.sideNav) this.sideNav.visible = true;
+  }
+
+  setNavItems(items: SideNavItem[]) {
+    //this.navItems = Observable.of(items);
+    if(this.sideNav) this.sideNav.navItems = items;
   }
 
 }
