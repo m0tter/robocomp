@@ -12,7 +12,10 @@
     "outDir": "../out-tsc/app",
     "target": "es5",
     "module": "es2015",
-    "baseUrl": "",
+    "baseUrl": ".",
+    "paths": {
+      "robocomp": ["./../../common/robocomp.d.ts"]
+    },
     "types": []
   },
   "exclude": [

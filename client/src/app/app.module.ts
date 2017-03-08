@@ -6,12 +6,15 @@ import { MaterialModule } from '@angular/material';
 
 import { AppRoutes }  from './app.routes';
 
+import { NavService }   from './services/nav.service';
+
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { LoginComponent } from './login/login.component';
 import { ResultsEntryComponent } from './results-entry/results-entry.component';
 import { SetupComponent } from './setup/setup.component';
+import { SideNavComponent } from './side-nav/side-nav.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,8 @@ import { SetupComponent } from './setup/setup.component';
     NavbarComponent,
     LoginComponent,
     ResultsEntryComponent,
-    SetupComponent
+    SetupComponent,
+    SideNavComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +33,9 @@ import { SetupComponent } from './setup/setup.component';
     AppRoutes,
     MaterialModule.forRoot()
   ],
-  providers: [],
+  providers: [
+    NavService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

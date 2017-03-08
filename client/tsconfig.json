@@ -9,6 +9,10 @@
     "experimentalDecorators": true,
     "lib": [
       "es2016"
-    ]
+    ],
+     "baseUrl": "",
+    "paths": {
+      "robocomp": ["../common/robocomp.d.ts"]
+    }
   }
 }

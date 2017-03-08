@@ -11,4 +11,9 @@ declare module 'robocomp' {
   export interface School extends SchoolBase {
     _id: string;
   }
+
+  export interface SideNavItem {
+    name: string;
+    route: string;
+  }
 }
