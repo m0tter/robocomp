@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
 
 import { AuthenticationService } from './authentication.service';
-import { User } from 'robocomp';
+import { User } from '../../../../common/robocomp';
 import { API_USER } from '../_api.paths';
 
 @Injectable()

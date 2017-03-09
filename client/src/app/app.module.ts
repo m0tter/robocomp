@@ -6,7 +6,8 @@ import { MaterialModule } from '@angular/material';
 
 import { AppRoutes }  from './app.routes';
 
-import { NavService }   from './services/nav.service';
+import { NavService, AuthenticationService, UserService } from './services';
+import { AuthGuard } from './guards';
 
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -34,7 +35,10 @@ import { SideNavComponent } from './side-nav';
     MaterialModule.forRoot()
   ],
   providers: [
-    NavService
+    NavService,
+    AuthenticationService,
+    UserService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })

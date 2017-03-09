@@ -1,4 +1,4 @@
-declare module 'robocomp' {
+//declare module 'robocomp' {
   export interface SchoolBase {
     name: string;
     contactName: string;
@@ -23,4 +23,4 @@ declare module 'robocomp' {
     firstName: string;
     lastName: string;
   }
-}
+//}

@@ -12,7 +12,7 @@
     ],
      "baseUrl": "",
     "paths": {
-      "robocomp": ["../common/robocomp.d.ts"]
+      "robocomp": ["../common/robocomp.ts"]
     }
   }
 }
