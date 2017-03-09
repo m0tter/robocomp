@@ -14,7 +14,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { LoginComponent } from './login/login.component';
 import { ResultsEntryComponent } from './results-entry/results-entry.component';
 import { SetupComponent } from './setup/setup.component';
-import { SideNavComponent } from './side-nav/side-nav.component';
+import { SideNavComponent } from './side-nav';
 
 @NgModule({
   declarations: [

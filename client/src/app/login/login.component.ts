@@ -12,8 +12,7 @@ export class LoginComponent implements OnInit {
   constructor(private navService: NavService) { }
 
   ngOnInit() {
-    this.navService.setNavItems([{name: 'login1', route: 'route1'}, {name: 'login2', route: 'route2'}]);
-    this.navService.show();
+    this.navService.hide();
   }
 
 }

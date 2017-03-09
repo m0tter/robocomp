@@ -12,7 +12,8 @@ export class DashboardComponent implements OnInit {
   constructor(private navService: NavService) { }
 
   ngOnInit() {
-    this.navService.hide();
+    this.navService.setNavItems([{name: 'Competitions', route:'.'}])
+    this.navService.show();
   }
 
 }

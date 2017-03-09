@@ -1,3 +1,5 @@
+@import "_palette";
+
 .page-wrapper {
   display: flex;
   min-height: 100vh;
@@ -9,10 +11,12 @@
 }
 .page-content {
   flex: 1;
+  padding-left: 20px;
 }
 .side-nav {
   flex: 0 0 fit-content;
-  padding-right: 20px;
+  order: -1;
+  background-color: $rc-darkgrey;
 }
 
 .fill-space { flex: 1 1 auto; }

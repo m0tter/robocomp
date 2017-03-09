@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Observable } from 'rxjs/Observable';
 
-import { NavService } from '../services/nav.service';
+import { NavService } from '../services';
 
 interface SideNavItem { name: string; route:string; }
 
