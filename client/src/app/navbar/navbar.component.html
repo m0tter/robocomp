@@ -1,7 +1,18 @@
 <nav class="navbar">
+  <img class="icon" src="/assets/robot-icon-48x48.png" alt="robot icon" >
   <a md-button routerLink="dashboard" routerLinkActive="routeactive" (click)="btnDashboard_Clicked()">DASHBOARD</a>
   <a md-button routerLink="results-entry" routerLinkActive="routeactive">RESULTS ENTRY</a>
-  <a md-button routerLink="setup" routerLinkActive="routeactive" [disabled]="true">SETUP</a>
+  <a md-button routerLink="setup" routerLinkActive="routeactive">SETUP</a>
   <span class="fill-remaining-space"></span>
   <a md-button routerLink="login" routerLinkActive="routeactive" (click)="btnLogin_Clicked()">LOGIN</a>
 </nav>
+
+<!--
+<nav class="navbar">
+  <a md-button routerLink="." routerLinkActive="routeactive">DASHBOARD</a>
+  <a md-button routerLink="." routerLinkActive="routeactive">RESULTS ENTRY</a>
+  <a md-button routerLink="." routerLinkActive="routeactive">SETUP</a>
+  <span class="fill-remaining-space"></span>
+  <a md-button routerLink="." routerLinkActive="routeactive">LOGIN</a>
+</nav>
+!-->

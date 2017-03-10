@@ -5,6 +5,12 @@ import 'rxjs/add/operator/map';
 
 import { API_AUTH } from '../_api.paths';
 
+export enum LoginResult {
+  success = 10,
+  failed = 20,
+  serverError = 30
+}
+
 @Injectable()
 export class AuthenticationService {
   public token: string;
@@ -14,7 +20,7 @@ export class AuthenticationService {
     this.token = currentUser && currentUser.token;
   }
 
-  login(username: string, password: string): Observable<boolean> {
+  login(username: string, password: string): Observable<LoginResult> {
     return this.http.post(API_AUTH, JSON.stringify({username: username, password: password}))
       .map((response: Response) => {
         let token = response.json() && response.json().token;
@@ -22,12 +28,16 @@ export class AuthenticationService {
           this.token = token;
           localStorage.setItem( 'currentUser', JSON.stringify({ username: username, password: password }));
           // login succeded
-          return true;
+          return LoginResult.success;
         } else {
           // login failed
-          return false;
+          return LoginResult.failed;
         }
-      });
+      })
+      .catch((response: Response) => {
+        console.log('catch response: ' + JSON.stringify(response));
+        return Observable.of(LoginResult.serverError);
+      })
   }
 
   logout(): void {

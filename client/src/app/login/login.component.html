@@ -1,5 +1,27 @@
 <div class="login-container">
   <div class="login-panel">
-    <h3>Login Here</h3>
+    <md-card>
+      <md-card-content>
+        <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
+          <md-input-container [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+            <input mdInput type="text" placeholder="Username" [(ngModel)]="user.username" #username="ngModel" name="username" required />
+            <md-hint *ngIf="f.submitted && !username.valid" class="help-block">Username is required</md-hint>
+          </md-input-container>
+          <md-input-container [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+            <input mdInput type="password" placeholder="Password" [(ngModel)]="user.password" #password="ngModel" name="password" required />
+            <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
+          </md-input-container>
+          <md-card-actions class="action-panel">
+            <div class="loginbtn">
+              <button md-raised-button color="primary" [disabled]="loading">Login</button>
+              <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+            </div>
+            <div class="loginerr">
+              <md-chip-list class="error-chip"><md-chip *ngIf="error" selected="true" color="warn">{{error}}</md-chip></md-chip-list>
+            </div>
+          </md-card-actions>
+        </form>
+      </md-card-content>
+    </md-card>
   </div>
 </div>

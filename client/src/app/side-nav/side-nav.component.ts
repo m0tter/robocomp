@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Observable } from 'rxjs/Observable';
-
 import { NavService } from '../services';
+import { SideNavItem } from '../../../../common/robocomp';
 
-interface SideNavItem { name: string; route:string; }
 
 @Component({
   selector: 'side-nav',

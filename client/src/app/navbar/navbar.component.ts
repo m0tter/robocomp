@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NavService } from '../services/nav.service';
-
-interface SideNavItem { name: string; route: string; }
+//import { NavService } from '../services/nav.service';
+//import { SideNavItem } from '../../../../common/robocomp';
 
 @Component({
   selector: 'app-navbar',
@@ -10,16 +9,7 @@ interface SideNavItem { name: string; route: string; }
 })
 export class NavbarComponent implements OnInit {
 
-  constructor( private navService: NavService ) { }
+  constructor( ) { }
 
-  btnDashboard_Clicked(): void {
-  }
-
-  btnLogin_Clicked(): void {
-    
-  }
-
-  ngOnInit() {
-  }
-
+  ngOnInit() { }
 }

@@ -1,14 +1,9 @@
 import { Injectable } from '@angular/core';
 import { SideNavComponent } from '../side-nav/side-nav.component';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/interval';
-import 'rxjs/add/operator/map';
-
-interface SideNavItem { name: string; route:string; }
+import { SideNavItem } from '../../../../common/robocomp';
 
 @Injectable()
 export class NavService {
-  public navItems: Observable<Array<SideNavItem>>;
   public sideNav: SideNavComponent;
 
   constructor() { 
