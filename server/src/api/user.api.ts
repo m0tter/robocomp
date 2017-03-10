@@ -13,9 +13,7 @@ export class UserAPI {
 
   buildRouter(): void {
     this.router.post('/', bparser.json(), (req: Request, res: Response) => {
-      UserModel.find({})
-    })
+      res.status( 200 ).json({token: 'fake-jwt-token'});
+    });
   }
-
 }
-
