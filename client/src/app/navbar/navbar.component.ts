@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-//import { NavService } from '../services/nav.service';
-//import { SideNavItem } from '../../../../common/robocomp';
+import { AuthenticationService } from '../services';
 
 @Component({
   selector: 'app-navbar',
@@ -8,8 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
+  
+  constructor( private authService: AuthenticationService ) { }
 
-  constructor( ) { }
+  isLoggedIn(): boolean {
+    if( this.authService.token ) return true; else return false;
+  }
 
-  ngOnInit() { }
+  ngOnInit() { 
+
+  }
 }

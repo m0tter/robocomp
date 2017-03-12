@@ -10,6 +10,13 @@ let app:Application = express();
 
 mongoose.connect( dbConfig.connectionStringLocalDB );
 app.use( morgan('dev') );
+
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 registerRoutes(app);
 
 app.listen(3000, () => {
