@@ -40,10 +40,8 @@ export class SchoolAPI {
           if( err ) this.errorHandler( err, res );
           else {
             res.status( 200 ).json({'success': true, data: result});
-            console.log('I\'ve saved your data');
           }
         });
-        console.log('I got here first');
       }
     });
 

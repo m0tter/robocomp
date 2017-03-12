@@ -19,8 +19,8 @@ export interface SideNavItem {
 export interface UserBase {
   username: string;
   password: string;
-  firstName: string;
-  lastName: string;
+  email: string;
+  isAdmin: boolean;
 }
 
 export interface User extends UserBase {

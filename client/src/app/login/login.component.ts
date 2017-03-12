@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.navService.hide();
-    this.authService.logout();
+    // this.authService.logout();
   }
 
   login() {
