@@ -10,8 +10,8 @@ import { User } from '../../../../common/robocomp';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  user: User = { firstName: '', lastName: '', username: '', password: ''};
-  loading = false;
+  user: User = { username: '', password: '', email: '', isAdmin: false };
+  loading = false; 
   error = '';
 
   constructor(
