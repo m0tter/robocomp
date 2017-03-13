@@ -12,7 +12,7 @@ export class DashboardComponent implements OnInit {
   constructor(private navService: NavService) { }
 
   ngOnInit() {
-    this.navService.setNavItems([{name: 'Competitions', route:'.'}])
+    this.navService.setNavItems([{name: 'Warren waz here', route:'.'}])
     this.navService.show();
   }
 
