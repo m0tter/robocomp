@@ -1,15 +1,19 @@
 @import "../_palette";
 
 .sidenav {
-  padding: 20px 50px 20px 10px;
   color: #d3d3d3;
   width: 130px;
   overflow: hidden;
+  padding-top: 10px;
 }
 
 a {
   color: $rc-darkwhite;
   text-decoration: none;
+}
+.nav-link-wrapper {
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 .nav-link {
   padding: 5px;
