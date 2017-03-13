@@ -2,6 +2,7 @@ import { Application, Request, Response } from 'express';
 import * as express from 'express';
 import * as morgan from 'morgan';
 import * as mongoose from 'mongoose';
+import * as cors from 'cors';
 
 import registerRoutes from './routes';
 import * as dbConfig from './config/db.config';
@@ -11,11 +12,15 @@ let app:Application = express();
 mongoose.connect( dbConfig.connectionStringLocalDB );
 app.use( morgan('dev') );
 
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
+//app.use(function (req, res, next) {
+//  console.log('origin: ' + req.header('origin'));
+//    res.setHeader('Access-Control-Allow-Headers', 'accept, authorization, content-type, x-requested-with');
+//    res.setHeader('Access-Control-Allow-Methods', 'GET,HEAD,PUT,PATCH,POST,DELETE');
+//    res.setHeader('Access-Control-Allow-Origin', req.header('origin'));
+//    next();
+//});
+app.use(cors());
+app.options('*', cors());
 
 registerRoutes(app);
 
