@@ -14,6 +14,7 @@ export interface School extends SchoolBase {
 export interface SideNavItem {
   name: string;
   route: string;
+  isDivider?: boolean;
 }
 
 export interface UserBase {

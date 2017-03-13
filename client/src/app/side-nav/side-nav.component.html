@@ -1,4 +1,6 @@
 <div *ngIf="visible" class="sidenav">
-  side-nav works!
-  <p *ngFor="let i of navItems">item: {{ i.name }}</p>
+  <div class="nav-link" *ngFor="let i of navItems"> 
+    <div class="nav-divider" *ngIf="i.isDivider"></div>
+    <a *ngIf="!i.isDivider || undefined" href="{{i.route}}">{{ i.name }}</a>
+  </div>
 </div>

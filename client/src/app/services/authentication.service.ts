@@ -21,7 +21,7 @@ export class AuthenticationService {
   }
 
   login(username: string, password: string): Observable<LoginResult> {
-    // console.log('json: ' + JSON.stringify({username: username, password: password}));
+    console.log('json: ' + JSON.stringify({username: username, password: password}));
     return this.http.post(API_AUTH, JSON.stringify({username: username, password: password}))
       .map((response: Response) => {
         let token = response.json() && response.json().token;

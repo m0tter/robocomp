@@ -13,8 +13,9 @@ export class AuthAPI {
 
   buildRouter(): void {
     this.router.post('/', bparser.json(), (req: Request, res: Response) => {
-      let data:User = req.body;
-      console.log('body: ' + data.username);
+      // let data:User = req.body;
+      console.log('body: ' + JSON.stringify(req.body));
+      //console.log('body: ' + data.username);
       // UserModel.findOne({ username: })
       res.status( 200 ).json( {token: 'fake-jwt-token'} );
     });
