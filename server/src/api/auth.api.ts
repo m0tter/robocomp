@@ -13,11 +13,10 @@ export class AuthAPI {
   }
 
   buildRouter(): void {
-    //this.router.post('/', cors(), (req, res, next) => {
-    //  next();
-    //})
-    this.router.post('/', [cors(), bparser.json()], (req: Request, res: Response) => {
+    
+    this.router.post('/', [bparser.json()], (req: Request, res: Response) => {
       // let data:User = req.body;
+      console.log('req is json: ' + req.is('json'));
       console.log('body: ' + req.body.username);
       //console.log('body: ' + data.username);
       // UserModel.findOne({ username: })

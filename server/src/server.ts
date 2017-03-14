@@ -9,16 +9,9 @@ import * as dbConfig from './config/db.config';
 
 let app:Application = express();
 
-mongoose.connect( dbConfig.connectionStringLocalDB );
+//mongoose.connect( dbConfig.connectionStringLocalDB );
 app.use( morgan('dev') );
 
-//app.use(function (req, res, next) {
-//  console.log('origin: ' + req.header('origin'));
-//    res.setHeader('Access-Control-Allow-Headers', 'accept, authorization, content-type, x-requested-with');
-//    res.setHeader('Access-Control-Allow-Methods', 'GET,HEAD,PUT,PATCH,POST,DELETE');
-//    res.setHeader('Access-Control-Allow-Origin', req.header('origin'));
-//    next();
-//});
 app.use(cors());
 app.options('*', cors());
 
