@@ -1,6 +1,7 @@
 import { Router, Request, Response }  from 'express';
 import { User }                       from 'robocomp';
 import * as bparser                   from 'body-parser';
+import * as cors                      from 'cors';
 
 import { UserModel, UserDocument } from '../models/user.model';
 
@@ -12,9 +13,11 @@ export class AuthAPI {
   }
 
   buildRouter(): void {
-    this.router.post('/', bparser.json(), (req: Request, res: Response) => {
+    
+    this.router.post('/', [bparser.json()], (req: Request, res: Response) => {
       // let data:User = req.body;
-      console.log('body: ' + JSON.stringify(req.body));
+      console.log('req is json: ' + req.is('json'));
+      console.log('body: ' + req.body.username);
       //console.log('body: ' + data.username);
       // UserModel.findOne({ username: })
       res.status( 200 ).json( {token: 'fake-jwt-token'} );
