@@ -27,3 +27,10 @@ export interface UserBase {
 export interface User extends UserBase {
   _id?: string;
 }
+
+export interface CompBase {
+  name: string;
+  type: string;
+  teams: string[];
+  date: string;
+}

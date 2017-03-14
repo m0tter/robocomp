@@ -1,8 +1,10 @@
 <nav class="navbar">
   <img class="icon" src="/assets/robot-icon-48x48.png" alt="robot icon" >
+  <div class="button-spacing">
   <a md-button routerLink="dashboard" routerLinkActive="routeactive">DASHBOARD</a>
   <a md-button routerLink="results-entry" routerLinkActive="routeactive">RESULTS ENTRY</a>
   <a md-button routerLink="setup" routerLinkActive="routeactive">SETUP</a>
+  </div>
   <span class="fill-remaining-space"></span>
   <a md-button routerLink="login" routerLinkActive="routeactive">
     <span *ngIf="isLoggedIn()">LOGOUT</span>
