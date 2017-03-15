@@ -1,6 +1,8 @@
-import { Router, Request, Response }  from 'express';
+import { Router, Request, Response, NextFunction }  from 'express';
 import { School }                     from 'robocomp';
 import * as bparser                   from 'body-parser';
+import * as jwt                       from 'jsonwebtoken';
+import { AUTH_SECRET }                from '../config/auth.config';
 
 import { SchoolModel, SchoolDocument } from '../models/school.model';
 
@@ -12,6 +14,7 @@ export class SchoolAPI {
   }
 
   buildRouter() {
+    
     this.router.get('/', ( req: Request, res: Response ) => {
       SchoolModel.find({'isCurrent': true}, (err: any, schools: School[]) => {
         if(err) this.errorHandler(err, res);
@@ -23,6 +26,18 @@ export class SchoolAPI {
           }
         }
       });
+    });
+
+    this.router.use((req, res, next) => {
+      var token = req.body.token || req.query.token || req.headers['x-access-token'];
+      if( token ) {
+        jwt.verify( token, AUTH_SECRET, ( err: any, decoded: jwt.VerifyCallback ) => {
+          if( err ) res.status( 401 ).json({ 'success': 'false', 'message': err });
+          else {
+            next();
+          }
+        });
+      }
     });
 
     this.router.post('/', bparser.json(), (req: Request, res: Response) => {

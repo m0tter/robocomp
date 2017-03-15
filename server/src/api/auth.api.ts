@@ -20,11 +20,10 @@ export class AuthAPI {
       UserModel.findOne({'username': body.username, 'password': body.password }, (err, user: UserDocument) => {
         if( err ) this.errorHandler(err);
         if( !user ) {
-          console.log('user not found');
           res.status( 200 ).json( {success: 'false', message: 'Incorrect username or password.' } );
         } else {
-          console.log('user found');
-          var token = jwt.sign(user.username, AUTH_SECRET, { expiresIn: AUTH_EXPIRY});
+          var token = jwt.sign({ username: user.username, isAdmin: user.isAdmin }
+            , AUTH_SECRET, { expiresIn: AUTH_EXPIRY });
           res.status( 200 ).json( {success: 'true', data: token} );
         }
       });
