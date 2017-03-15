@@ -10,6 +10,5 @@ let SchoolSchema = new Schema({
   isCurrent: Boolean
 });
 
-
 export interface SchoolDocument extends SchoolBase, Document { }
 export var SchoolModel = model<SchoolDocument>('Schools', SchoolSchema);
