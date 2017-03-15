@@ -1,7 +1,8 @@
 import { Router, Request, Response }  from 'express';
 import { User }                       from 'robocomp';
+import { AUTH_SECRET, AUTH_EXPIRY }   from '../config/auth.config';
 import * as bparser                   from 'body-parser';
-import * as cors                      from 'cors';
+import * as jwt                       from 'jsonwebtoken';
 
 import { UserModel, UserDocument } from '../models/user.model';
 
@@ -14,13 +15,19 @@ export class AuthAPI {
 
   buildRouter(): void {
     
-    this.router.post('/', [bparser.json()], (req: Request, res: Response) => {
-      // let data:User = req.body;
-      console.log('req is json: ' + req.is('json'));
-      console.log('body: ' + req.body.username);
-      //console.log('body: ' + data.username);
-      // UserModel.findOne({ username: })
-      res.status( 200 ).json( {token: 'fake-jwt-token'} );
+    this.router.post('/', bparser.json(), (req: Request, res: Response) => {
+      var body = <User>req.body;
+      UserModel.findOne({'username': body.username, 'password': body.password }, (err, user: UserDocument) => {
+        if( err ) this.errorHandler(err);
+        if( !user ) {
+          console.log('user not found');
+          res.status( 200 ).json( {success: 'false', message: 'Incorrect username or password.' } );
+        } else {
+          console.log('user found');
+          var token = jwt.sign(user.username, AUTH_SECRET, { expiresIn: AUTH_EXPIRY});
+          res.status( 200 ).json( {success: 'true', data: token} );
+        }
+      });
     });
 
     this.router.get('/setup', (req: Request, res: Response) => {
@@ -39,5 +46,10 @@ export class AuthAPI {
   static apiController(): Router {
     let userAPI = new AuthAPI();
     return userAPI.router;
+  }
+
+  private errorHandler(error: any, response?: Response): void {
+    console.error( 'Error in auth.api.ts - ' + (error.message || error) );
+    response.status( 500 ).send('Error in auth.api.ts - ' + (error.message || error));
   }
 }

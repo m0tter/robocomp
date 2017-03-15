@@ -9,7 +9,7 @@ import * as dbConfig from './config/db.config';
 
 let app:Application = express();
 
-//mongoose.connect( dbConfig.connectionStringLocalDB );
+mongoose.connect( dbConfig.connectionStringLocalDB );
 app.use( morgan('dev') );
 
 app.use(cors());

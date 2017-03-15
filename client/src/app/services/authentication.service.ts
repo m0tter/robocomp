@@ -25,9 +25,8 @@ export class AuthenticationService {
     let options = new RequestOptions({ headers: headers });
     console.log('json: ' + JSON.stringify({username: username, password: password}));
     return this.http.post(API_AUTH, JSON.stringify({username: username, password: password}), options)
-    //return this.http.post(API_AUTH, JSON.stringify({username: username, password: password}))
       .map((response: Response) => {
-        let token = response.json() && response.json().token;
+        let token = response.json() && response.json().data;
         if( token ) {
           this.token = token;
           localStorage.setItem( 'currentUser', JSON.stringify({ username: username, password: password }));
