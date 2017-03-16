@@ -28,16 +28,20 @@ export class SchoolAPI {
       });
     });
 
-    this.router.use((req, res, next) => {
-      var token = req.body.token || req.query.token || req.headers['x-access-token'];
+    this.router.use(bparser.json(), (req, res, next) => {
+      console.log('getting token...')
+      var token;
+      if( req && req.headers['x-access-token']) token = req.headers['x-access-token'];
       if( token ) {
+        console.log('verifying token...')
         jwt.verify( token, AUTH_SECRET, ( err: any, decoded: jwt.VerifyCallback ) => {
           if( err ) res.status( 401 ).json({ 'success': 'false', 'message': err });
           else {
+            console.log('token passed')
             next();
           }
         });
-      }
+      } else { res.status( 401 ).send('401 - NOT AUTHORISED') };
     });
 
     this.router.post('/', bparser.json(), (req: Request, res: Response) => {
