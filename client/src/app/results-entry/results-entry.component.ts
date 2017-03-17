@@ -38,6 +38,15 @@ export class ResultsEntryComponent implements OnInit {
     this.navService.show();
   }
 
+  saveInput(){
+    console.log("Save Clicked");
+    
+  }
+
+  // checkResultType(){
+  //   if( )
+  // }
+
   ngOnInit() {
     this.initSideNav();
   }

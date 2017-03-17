@@ -3,3 +3,40 @@
 h3 {
     color: $rc-navyblue;
 }
+
+.school-steup {
+    padding: 20px;
+}
+
+.container {
+    padding: 10px;
+}
+
+.grid {
+    display: table;
+    border: 1px solid #42a5f5;
+}
+
+.new-School {
+    background-color: #42a5f5;
+}
+
+.header {
+    border-bottom: 1px solid #42a5f5;
+    background-color: #42a5f5;
+    color: #fff;
+    display: table-row;
+}
+
+.setup-table {
+    display: table-row;
+}
+
+[class^="setup-"] {
+    display: table-cell;
+    padding: 8px;
+}
+
+.setup-select {width: 20px;}
+.setup-name{width: 120px;}
+.setup-team{width: 150px;}

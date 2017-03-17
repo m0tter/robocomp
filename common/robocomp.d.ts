@@ -30,7 +30,13 @@ export interface User extends UserBase {
 
 export interface CompBase {
   name: string;
-  type: string;
+  resultType: string;
   teams: string[];
   date: string;
+}
+
+export interface RoboEvent {
+  name: string;
+  date: string;
+  comps: string[];
 }
