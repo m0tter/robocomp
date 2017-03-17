@@ -35,9 +35,13 @@ export interface CompBase {
   date: string;
 }
 
-export interface RoboEvent {
+export interface RoboEventBase {
   name: string;
   date: string;
   comps: string[];
   isCurrent: boolean;
+}
+
+export interface RoboEvent extends RoboEventBase { 
+  _id?: string;
 }
