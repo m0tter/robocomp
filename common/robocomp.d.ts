@@ -39,4 +39,5 @@ export interface RoboEvent {
   name: string;
   date: string;
   comps: string[];
+  isCurrent: boolean;
 }
