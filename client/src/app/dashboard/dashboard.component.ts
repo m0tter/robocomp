@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { NavService } from '../services/nav.service';
-import { SideNavItem } from '../../../../common/robocomp';
+import { NavService, RobocompService } from '../services';
+import { SideNavItem, RoboEvent } from '../../../../common/robocomp';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,40 +9,22 @@ import { SideNavItem } from '../../../../common/robocomp';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
+  private currentEvent: RoboEvent;
 
-  constructor(private navService: NavService) { }
+  constructor (
+    private navService: NavService,
+    private roboService: RobocompService 
+  ) { }
 
   initSideNav(): void {
-    var items: SideNavItem[] = [
-      {
-        name: 'Results',
-        route: '/'
-      },
-      {
-        name: '',
-        route: '',
-        isDivider: true
-      },
-      {
-        name: 'Teams',
-        route: '/'
-      },
-      {
-        name: '',
-        route: '',
-        isDivider: true
-      },
-      {
-        name: 'School Results',
-        route: '/'
-      }
-    ]
-    this.navService.setNavItems(items);
-    this.navService.show();
+    this.navService.hide();
   }
 
   ngOnInit() {
     this.initSideNav();
+
+    this.roboService.getCurrentEvent()
+      .subscribe((result) => this.currentEvent = result );
   }
 
 }
