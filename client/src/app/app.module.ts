@@ -6,7 +6,7 @@ import { MaterialModule } from '@angular/material';
 
 import { AppRoutes }  from './app.routes';
 
-import { NavService, AuthenticationService, UserService } from './services';
+import { NavService, AuthenticationService, UserService, RobocompService } from './services';
 import { AuthGuard } from './guards';
 
 import { AppComponent } from './app.component';
@@ -38,7 +38,8 @@ import { SideNavComponent } from './side-nav';
     NavService,
     AuthenticationService,
     UserService,
-    AuthGuard
+    AuthGuard,
+    RobocompService
   ],
   bootstrap: [AppComponent]
 })
