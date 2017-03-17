@@ -1,5 +1,10 @@
 <div class="results-entry">
-  <a>[This will be a dropdown to select school]</a>
-  <a> [This will be a text feild to enter score]</a>
-  <a md-button class="btn">Save</a> 
+  <select id = "myList" aria-placeholder="Team">
+    <option value = "1">one</option>
+    <option value = "2">two</option>
+    <option value = "3">three</option>
+    <option value = "4">four</option>
+  </select>
+  <input type="text" placeholder="Score" name="scoreInput">
+  <a md-button class="btn" (click)="saveInput()">Save</a>
 </div>

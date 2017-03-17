@@ -1,10 +1,11 @@
+//Author: James
 import { Model, Schema, Document, model } from 'mongoose';
 import { CompBase } from 'robocomp';
 
 let CompSchema = new Schema ({
     name: String,
-    type: String,
-    teams: Array,
+    resultType: String,
+    teams: [String],
     date: String
 });
 
