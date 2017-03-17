@@ -34,3 +34,9 @@ export interface CompBase {
   teams: string[];
   date: string;
 }
+
+export interface RoboEvent {
+  name: string;
+  date: string;
+  comps: string[];
+}
