@@ -9,5 +9,5 @@ let RoboSchema = new Schema ({
     isCurrent: Boolean
 });
 
-export interface RoboDocument extends RoboEvent, Document { }
-export var EventModel = model<RoboDocument>('RoboEvent', RoboSchema);
+// export interface RoboDocument extends RoboEvent, Document { }
+// export var EventModel = model<RoboDocument>('RoboEvent', RoboSchema);

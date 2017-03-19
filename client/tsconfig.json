@@ -10,9 +10,9 @@
     "lib": [
       "es2016"
     ],
-     "baseUrl": "",
+    "baseUrl": ".",
     "paths": {
-      "robocomp": ["../common/robocomp.ts"]
+      "robocomp": ["../common/robocomp"]
     }
   }
 }

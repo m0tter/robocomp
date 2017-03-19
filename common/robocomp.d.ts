@@ -35,10 +35,21 @@ export interface CompBase {
   date: string;
 }
 
+export enum CompetitionType {
+  number = 1,
+  time = 2,
+  boolean = 3
+}
+
+export interface Competition {
+  name: string;
+  type: CompetitionType;
+}
+
 export interface RoboEventBase {
   name: string;
   date: string;
-  comps: string[];
+  competitions: Competition[];
   isCurrent: boolean;
 }
 
