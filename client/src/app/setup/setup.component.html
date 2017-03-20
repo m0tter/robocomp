@@ -1,21 +1,3 @@
-<h3>School Setup Page</h3>
-<div class="school-setup">
-    <a md-button class="new-School" (click)="create-New-School()">New School</a>
-    <div class="container">
-        <div class="grid">
-        <div class="header">
-            <div class="setup-select">&nbsp;</div>
-            <div class="setup-name">School Name</div>
-            <div class="setup-team">Team Name</div>
-            <div class="setup-robot">Robot Name</div>
-            <div class="setup-members">Team Members</div>
-        </div>
-        <div class="setup-table" *ngFor="let setup-table of school-setup; let i = index"></div>
-            <div class="setup-select"><input type="checkbox" (click)="teamSelect_Clicked(i)"></div>
-            <div class="setup-name">{{setup-table.name}}</div>
-            <div class="setup-team">{{setup-table.team}}</div>
-            <div class="setup-robot">{{setup-table.robot}}</div>
-            <div class="setup-members">{{setup-table.member}}</div>
-    </div>
-</div>
+<div class="setup">
+  <router-outlet></router-outlet>
 </div>

@@ -18,7 +18,7 @@ export class RoboEventAPI {
     this.router.get('/', (req, res) => {
       RoboEventModel.find((err, events) => {
         if( err ) this.errorHandler( err, res );
-        if( events ) {
+        if( events && events.length > 0 ) {
           res.status( 200 ).json( {'success': true, 'data': events} );
         } else {
           res.status( 200 ).json({'success': false, 'message': 'returned events is empty'});

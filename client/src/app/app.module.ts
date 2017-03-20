@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
 
 import { AppRoutes }  from './app.routes';
+import { SetupRoutes } from './setup/setup.routes';
 
 import { NavService, AuthenticationService, UserService, RobocompService } from './services';
 import { AuthGuard } from './guards';
@@ -14,8 +15,11 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { LoginComponent } from './login/login.component';
 import { ResultsEntryComponent } from './results-entry/results-entry.component';
-import { SetupComponent } from './setup/setup.component';
 import { SideNavComponent } from './side-nav';
+
+import { SetupComponent } from './setup/setup.component';
+import { SetupEventComponent } from './setup/events/setup-event.component';
+import { SetupSchoolComponent } from './setup/schools/setup-school.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +29,8 @@ import { SideNavComponent } from './side-nav';
     LoginComponent,
     ResultsEntryComponent,
     SetupComponent,
+    SetupEventComponent,
+    SetupSchoolComponent,
     SideNavComponent
   ],
   imports: [
@@ -32,6 +38,7 @@ import { SideNavComponent } from './side-nav';
     FormsModule,
     HttpModule,
     AppRoutes,
+    SetupRoutes,
     MaterialModule.forRoot()
   ],
   providers: [

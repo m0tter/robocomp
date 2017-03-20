@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { NavService, RobocompService } from '../services';
-import { SideNavItem, RoboEvent } from '../../../../common/robocomp';
+import { SideNavItem, RoboEvent } from 'robocomp';
 
 @Component({
   selector: 'app-dashboard',
@@ -29,8 +29,8 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     this.initSideNav();
 
-    this.roboService.getCurrentEvent()
-      .subscribe((result) => this.currentEvent = result );
+    //this.roboService.getCurrentEvent()
+    //  .subscribe((result) => this.currentEvent = result );
   }
 
 }
