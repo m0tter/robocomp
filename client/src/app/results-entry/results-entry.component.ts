@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { NavService } from '../services/nav.service';
-import { SideNavItem } from '../../../../common/robocomp';
+import { NavService, RobocompService } from '../services';
+import { SideNavItem, RoboEvent } from '../../../../common/robocomp';
 
 @Component({
   selector: 'app-results-entry',
@@ -9,8 +9,18 @@ import { SideNavItem } from '../../../../common/robocomp';
   styleUrls: ['./results-entry.component.scss']
 })
 export class ResultsEntryComponent implements OnInit {
+private currentEvent: RoboEvent;
 
-  constructor(private navService: NavService) { }
+  constructor(
+    private navService: NavService,
+    private RobocompService : RobocompService
+  ) { }
+
+   ngOnInit() {
+    this.initSideNav();
+
+    this.RobocompService.getCurrentEvent().subscribe((result) => this.currentEvent = result);
+  }
 
   initSideNav(): void {
     var items: SideNavItem[] =[
@@ -46,9 +56,5 @@ export class ResultsEntryComponent implements OnInit {
   // checkResultType(){
   //   if( )
   // }
-
-  ngOnInit() {
-    this.initSideNav();
-  }
 
 }
