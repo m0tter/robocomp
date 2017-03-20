@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { NavService, AuthenticationService, LoginResult } from '../services';
-import { User } from '../../../../common/robocomp';
+import { User } from 'robocomp';
 
 @Component({
   selector: 'app-login',
