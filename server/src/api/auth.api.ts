@@ -42,11 +42,6 @@ export class AuthAPI {
     });
   }
 
-  static apiController(): Router {
-    let userAPI = new AuthAPI();
-    return userAPI.router;
-  }
-
   private errorHandler(error: any, response?: Response): void {
     console.error( 'Error in auth.api.ts - ' + (error.message || error) );
     response.status( 500 ).send('Error in auth.api.ts - ' + (error.message || error));

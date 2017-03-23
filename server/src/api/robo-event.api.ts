@@ -60,10 +60,6 @@ export class RoboEventAPI {
     });
   }
 
-  static apiController(): Router {
-    return new RoboEventAPI().router;
-  }
-
   private errorHandler( err: any, res?: Response ) {
     console.error('An error occurred in robo-event.api, ', err.message || err );
     if( res ){

@@ -7,7 +7,7 @@ import { AUTH_SECRET }                from '../config/auth.config';
 import { SchoolModel, SchoolDocument } from '../models/school.model';
 
 export class SchoolAPI {
-  router = Router();
+  public router = Router();
 
   constructor( ){
     this.buildRouter();
@@ -67,11 +67,6 @@ export class SchoolAPI {
         else res.status( 200 ).json( {'success': true, 'data': req.params.id} );
       });
     });
-  }
-
-  static apiController(): Router {
-    let schoolAPI = new SchoolAPI();
-    return schoolAPI.router;
   }
 
   private errorHandler( err: any, res?: Response ){
