@@ -4,6 +4,7 @@ export interface SchoolBase {
   contactNumber: string;
   contactEmail: string;
   address: string;
+  teams: string[];
   isCurrent: boolean;
 }
 
