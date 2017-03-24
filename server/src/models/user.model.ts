@@ -1,5 +1,6 @@
 import { Model, Schema, Document, model } from 'mongoose';
 import { UserBase } from 'robocomp';
+import * as Utils from '../utils/utils';
 
 let UserSchema = new Schema({
   username: { type: String, unique: true, required: true },
@@ -15,6 +16,18 @@ UserSchema.statics = {
 
   updateUser: (user: UserDocument, callback: Function) => {
     user.update(callback);
+  },
+
+  decryptPassword: (password: string, callback: Function): string =>{
+    let decrypted = Utils.decrypt(password);
+    if(callback) callback(decrypted);
+    return decrypted;
+  },
+
+  encryptPassword: (password: string, callback: Function): string => {
+    let encrypted = Utils.encrypt(password);
+    if(callback) callback(encrypted);
+    return encrypted;
   }
 }
 

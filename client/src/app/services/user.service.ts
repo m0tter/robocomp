@@ -28,7 +28,7 @@ export class UserService {
     return this.http.get(API_USER, this.options)
       .toPromise()
       .then( resp => { return resp.json().data as User[]})
-      .catch( err => this.errorHandler(err));
+      .catch( err => { return this.errorHandler(err)});
   }
 
   private errorHandler(error: any): Promise<any> {
