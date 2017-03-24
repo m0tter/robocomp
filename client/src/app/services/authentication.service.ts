@@ -47,4 +47,11 @@ export class AuthenticationService {
     this.token = null;
     localStorage.removeItem('currentUser');
   }
+
+  httpOptions(): RequestOptions {
+    let headers = new Headers({ 'Authorization': 'Bearer ' + this.token });
+    let options = new RequestOptions({ headers: headers });
+
+    return options;
+  }
 }
