@@ -1,1 +1,29 @@
-setup school works!
+<div class="whole-setup-school">
+    <div class="container">
+        <div class="school-setup-buttons">
+            <a md-button routerLink="." routerLinkActive="routeactive">NEW SCHOOL</a>
+            <a md-button routerLink="." routerLinkActive="routeactive">EDIT SCHOOL</a>
+            <a md-button routerLink="." routerLinkActive="routeactive">DELETE SCHOOL</a>
+        </div>
+        <div class="school-table">
+            <div class="header">
+                <div class="setup-select">&nbsp;</div>
+                <div class="setup-name">School Name</div>
+                <div class="setup-contact">Contact Name</div>
+                <div class="setup-email">Contact Email</div>
+                <div class="setup-number">Contact Number</div>
+                <div class="setup-address">Address</div>
+                <div class="setup-teams">Teams</div>
+            </div>
+            <div class="school" *ngFor="let school of schools; let i = index;">
+                <div class="setup-select"><input type="checkbox" (click)="schoolSelect_Clicked(i)"></div>
+                <div class="setup-name">{{school.name}}</div>
+                <div class="setup-contact">{{school.contactName}}</div>
+                <div class="setup-email">{{school.contactEmail}}</div>
+                <div class="setup-number">{{school.contactNumber}}</div>
+                <div class="setup-address">{{school.address}}</div>
+                <div class="setup-teams">{{school.teams}}</div>
+            </div>
+        </div>
+    </div>
+</div>

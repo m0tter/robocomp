@@ -1,0 +1,32 @@
+@import "../../_palette";
+
+.container {
+    padding: 15px;
+}
+
+.school-setup-buttons {
+    padding-bottom: 20px;
+    color: #fff;  
+}
+
+.school-table {
+    padding: 5px;
+    display: table;
+    border: 1px solid #42a5f5;
+}
+
+.school {
+    display: table-row;
+}
+
+[class^="setup-"] {
+    display: table-cell;
+    padding: 8px;
+}
+
+.setup-selected { width: 20px; }
+.setup-name { width: 120px; }
+.setup-contact {width: 150px; }
+.setup-email {width: 200px; }
+.setup-address {width: 200px; }
+.school-teams {width: 120px; }

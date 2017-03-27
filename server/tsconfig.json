@@ -8,7 +8,7 @@
     "emitDecoratorMetadata": true,
     "baseUrl": ".",
     "paths": {
-      "robocomp": ["../common/robocomp.d.ts"]
+      "robocomp": ["../common/robocomp"]
     },
     "removeComments": false,
     "suppressImplicitAnyIndexErrors": true
