@@ -2,6 +2,7 @@ import { Router, Request, Response, NextFunction }  from 'express';
 import { School }                     from 'robocomp';
 import * as bparser                   from 'body-parser';
 import * as jwt                       from 'jsonwebtoken';
+import * as utils                     from '../utils';
 import { AUTH_SECRET }                from '../config/auth.config';
 
 import { SchoolModel, SchoolDocument } from '../models/school.model';
@@ -28,17 +29,8 @@ export class SchoolAPI {
       });
     });
 
-    this.router.use(bparser.json(), (req, res, next) => {
-      var token;
-      if( req && req.headers['x-access-token']) token = req.headers['x-access-token'];
-      if( token ) {
-        jwt.verify( token, AUTH_SECRET, ( err: any, decoded: jwt.VerifyCallback ) => {
-          if( err ) res.status( 401 ).json({ 'success': 'false', 'message': '401 - NOT AUTHORISED' });
-          else {
-            next();
-          }
-        });
-      } else { res.status( 401 ).send('401 - NOT AUTHORISED') };
+    this.router.use((req, res, next) => {
+      utils.tokenCheck(req, res, next);
     });
 
     this.router.post('/', bparser.json(), (req: Request, res: Response) => {
