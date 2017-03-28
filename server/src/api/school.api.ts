@@ -30,7 +30,6 @@ export class SchoolAPI {
     });
 
     this.router.use((req, res, next) => {
-      console.log('im at the start');
       utils.tokenCheck(req, res, next);
     });
 
