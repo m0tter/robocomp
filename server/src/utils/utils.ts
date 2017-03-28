@@ -41,5 +41,7 @@ export function tokenCheck(req: Request, res: Response, next: NextFunction){
     } else {
       res.status( 401 ).send('401 - NOT AUTHORISED');
     }
+  }else {
+    res.status( 401 ).send('401 - NOT AUTHORISED');
   }
 }
