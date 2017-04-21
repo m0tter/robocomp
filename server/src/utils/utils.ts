@@ -30,16 +30,18 @@ export function tokenCheck(req: Request, res: Response, next: NextFunction){
     var authReq = <AuthRequest>req;
     var token = req.headers['x-access-token'];
     if( token ) {
-      jwt.verify( token, AUTH_SECRET, ( err: any, decoded: jwt.VerifyCallback ) => {
+      jwt.verify( token, AUTH_SECRET, ( err: any, decoded: any ) => {
         if( err ) {
           res.status( 401 ).json({ 'success': 'false', 'message': '401 - NOT AUTHORISED' });
         } else {
-          authReq.token = token;
+          authReq.token = decoded;
           next();
         }
       });
     } else {
       res.status( 401 ).send('401 - NOT AUTHORISED');
     }
+  }else {
+    res.status( 401 ).send('401 - NOT AUTHORISED');
   }
 }
