@@ -17,7 +17,7 @@ export class SetupService {
     constructor(private http: Http, private authService: AuthenticationService)
     {this.options = this.authService.httpOptions();}
 
-    getEvent(): Promise<RoboEvent[]> {
+    getEvents(): Promise<RoboEvent[]> {
         return this.http.get(API_EVENT, this.options)
             .toPromise()
             .then((response: Response) => response.json() as RoboEvent[])
@@ -25,8 +25,8 @@ export class SetupService {
     }
 
     getEventById(id: string): Promise<RoboEvent> {
-        return this.getEvent()
-        .then(schools => schools.find(school => school._id === id));
+        return this.getEvents()
+        .then(events => events.find(events => events._id === id));
     }
 
     errorHandler(error: any): Promise<any>{

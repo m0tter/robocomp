@@ -1,14 +1,20 @@
-<div class="EventSetup">
-    <a md-button class="btn">New</a>
-    <a md-button class="btn">Edit</a>
+<div class="whole-setup-event">
     <div class="container">
-        <div class="grid">
+        <div class="event-setup-buttons">
+            <a md-button routerLink="." routerLinkActive="routeactive">NEW EVENT</a>
+            <a md-button routerLink="." routerLinkActive="routeactive">EDIT EVENT</a>
+            <a md-button routerLink="." routerLinkActive="routeactive">DELETE EVENT</a>
+        </div>
+        <div class="event-table">
             <div class="header">
-                <div class="ev-select">&nbsp;</div>
-                <div class="ev-name">Name</div>
-                <div class="ev-Date">Date</div>
+                <div class="setup-select">&nbsp;</div>
+                <div class="setup-name">Event Name</div>
+                <div class="setup-date">Event Date</div>
             </div>
-            <div class="events">
+            <div class="event" *ngFor="let school of schools; let i = index;">
+                <div class="setup-select"><input type="checkbox" (click)="eventSelect_Clicked(i)"></div>
+                <div class="setup-name">{{event.name}}</div>
+                <div class="setup-date">{{event.date}}</div>
             </div>
         </div>
     </div>
