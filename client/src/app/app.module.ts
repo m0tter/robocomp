@@ -21,6 +21,7 @@ import { SideNavComponent } from './side-nav';
 import { SetupComponent } from './setup/setup.component';
 import { SetupEventComponent } from './setup/events/setup-event.component';
 import { SetupSchoolComponent } from './setup/schools/setup-school.component';
+import { NewSchoolComponent } from './setup/schools/new-school/new-school.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { SetupSchoolComponent } from './setup/schools/setup-school.component';
     SetupComponent,
     SetupEventComponent,
     SetupSchoolComponent,
-    SideNavComponent
+    SideNavComponent,
+    NewSchoolComponent
   ],
   imports: [
     BrowserModule,
