@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, Params } from '@angular/router';
 
 
 @Component({
@@ -7,15 +8,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./edit-schools.component.scss']
 })
 export class EditSchoolsComponent implements OnInit {
+  
 
-  constructor() { }
+  constructor(
+    private route: Router
+  ) { }
 
-  ngOnInit() {
+  ngOnInit():void {
+    this.route.params
+    .switchmap((params: Params) => {
+      if(params['id'] !== '0') {
+        this.
+      }
+    })
+
   }
-
-  NewSchool(): void {
-    this.router
-  }
+  
 
 }
 
