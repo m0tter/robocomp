@@ -20,6 +20,7 @@ import { SideNavComponent } from './side-nav';
 import { SetupComponent } from './setup/setup.component';
 import { SetupEventComponent } from './setup/events/setup-event.component';
 import { SetupSchoolComponent } from './setup/schools/setup-school.component';
+import { EditSchoolsComponent } from './setup/schools/edit-schools/edit-schools.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { SetupSchoolComponent } from './setup/schools/setup-school.component';
     SetupComponent,
     SetupEventComponent,
     SetupSchoolComponent,
-    SideNavComponent
+    SideNavComponent,
+    EditSchoolsComponent
   ],
   imports: [
     BrowserModule,
