@@ -1,9 +1,9 @@
 <div class="whole-setup-event">
     <div class="container">
         <div class="event-setup-buttons">
-            <a md-button routerLink="." routerLinkActive="routeactive">NEW EVENT</a>
-            <a md-button routerLink="." routerLinkActive="routeactive">EDIT EVENT</a>
-            <a md-button routerLink="." routerLinkActive="routeactive">DELETE EVENT</a>
+            <a md-button (click)="btnNewClicked()">NEW EVENT</a>
+            <a md-button (click)="btnEditClicked()">EDIT EVENT</a>
+            <a md-button (click)="btnDeleteClicked()">DELETE EVENT</a>
         </div>
         <div class="event-table">
             <div class="header">
