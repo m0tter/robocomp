@@ -20,6 +20,7 @@ private currentEvent: RoboEvent;
     this.initSideNav();
 
     this.RobocompService.getCurrentEvent().subscribe((result) => this.currentEvent = result);
+    
   }
 
   initSideNav(): void {
@@ -48,13 +49,12 @@ private currentEvent: RoboEvent;
     this.navService.show();
   }
 
-  saveInput(){
+  saveInput(): void{
     console.log("Save Clicked");
-    
   }
 
-  // checkResultType(){
-  //   if( )
-  // }
+  getCompType(){
+    return(2);
+  }
 
 }
