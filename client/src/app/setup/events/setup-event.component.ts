@@ -22,7 +22,7 @@ export class SetupEventComponent implements OnInit {
   constructor(private setupService: SetupService, private router: Router){} 
 
   ngOnInit(): void{
-    console.log("ngOnInit");
+    //console.log("ngOnInit");
     this.setupService.getEvents()
       .then(res => this.roboEvents = res)
       .catch(err => this.errorHandler(err));

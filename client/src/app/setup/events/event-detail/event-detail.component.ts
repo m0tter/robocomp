@@ -27,7 +27,13 @@ export class EventDetailComponent implements OnInit {
   }
 
   btnSaveClicked(){
-    
+    if(this.newRoboEvent){
+            this.setupService.newEvent(this.roboEvent)
+            .then( resp => {this.goBack();})
+        } else {
+            this.setupService.editEvent(this.roboEvent)
+            .then( resp => {this.goBack();})
+        }
   }
 
   btnCancelClicked(){

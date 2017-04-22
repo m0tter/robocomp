@@ -2,9 +2,9 @@
     <div *ngIf="newRoboEvent">New School</div>
     <div *ngIf="!newRoboEvent">Edit School</div>
     <form>
-        <div *ngIf="event">
-            <input type="text" placeholder="Event Name" name="name">
-            <input type="text" placeholder="Event Date" name="date">
+        <div class="inputBox" *ngIf="roboEvent">
+            <input type="text" placeholder="Event Name" [(ngModel)]="roboEvent.name" name="name">
+            <input type="text" placeholder="Event Date" [(ngModel)]="roboEvent.date" name="date">
         </div>
     </form>
     <div class="buttons">

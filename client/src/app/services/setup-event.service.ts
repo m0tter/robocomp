@@ -12,6 +12,8 @@ import { API_EVENT } from '../_api.paths';
 
 @Injectable()
 export class SetupService {
+    private RoboEvent = '/src/api/';
+
     private options: RequestOptions;
 
     constructor(private http: Http, private authService: AuthenticationService)
@@ -29,9 +31,23 @@ export class SetupService {
         .then(events => events.find(events => events._id === id));
     }
 
-    errorHandler(error: any): Promise<any>{
+    newEvent(roboEvent: RoboEvent): Promise<RoboEvent> {
+        return this.http.post(API_EVENT, roboEvent)
+        .toPromise()
+        .then(resp => resp.json().data as RoboEvent)
+        .catch(err => this.errorHandler(err));
+    }
+
+    editEvent(roboEvent: RoboEvent): Promise<RoboEvent> {
+        return this.http.put(this.RoboEvent + roboEvent._id, roboEvent)
+        .toPromise()
+        .then(resp => resp.json().data as RoboEvent)
+        .catch(err => this.errorHandler(err));
+    }
+
+    errorHandler(err: any): Promise<any>{
         //TODO: finish error handler
-        return Promise.reject("Something is broken, figure it out.")
+        return Promise.reject("Something is broken, figure it out:" + err)
     }
 }
 
