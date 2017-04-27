@@ -11,7 +11,7 @@
                 <div class="setup-name">Event Name</div>
                 <div class="setup-date">Event Date</div>
             </div>
-            <div class="event" *ngFor="let school of schools; let i = index;">
+            <div class="event" *ngFor="let event of roboEvents; let i = index;">
                 <div class="setup-select"><input type="checkbox" (click)="eventSelect_Clicked(i)"></div>
                 <div class="setup-name">{{event.name}}</div>
                 <div class="setup-date">{{event.date}}</div>

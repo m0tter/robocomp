@@ -22,7 +22,7 @@ export class SetupService {
     getEvents(): Promise<RoboEvent[]> {
         return this.http.get(API_EVENT, this.options)
             .toPromise()
-            .then((response: Response) => response.json() as RoboEvent[])
+            .then((response: Response) => response.json().data as RoboEvent[])
             .catch(err => {return this.errorHandler(err)});
     }
 
@@ -45,9 +45,13 @@ export class SetupService {
         .catch(err => this.errorHandler(err));
     }
 
+    deleteEvent(){
+
+    }
+
     errorHandler(err: any): Promise<any>{
         //TODO: finish error handler
-        return Promise.reject("Something is broken, figure it out:" + err)
+        return Promise.reject("Something is broken, figure it out:" + err);
     }
 }
 
