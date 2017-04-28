@@ -9,7 +9,7 @@ export interface SchoolBase {
 }
 
 export interface School extends SchoolBase {
-  _id: string;
+  _id?: string;
 }
 
 export interface SideNavItem {
