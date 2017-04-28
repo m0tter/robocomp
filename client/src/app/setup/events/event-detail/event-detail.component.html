@@ -1,6 +1,6 @@
 <div class="event-details">
-    <div *ngIf="newRoboEvent">New School</div>
-    <div *ngIf="!newRoboEvent">Edit School</div>
+    <div class="heading" *ngIf="newRoboEvent">New Event</div>
+    <div class="heading" *ngIf="!newRoboEvent">Edit Event</div>
     <form>
         <div class="inputBox" *ngIf="roboEvent">
             <input type="text" placeholder="Event Name" [(ngModel)]="roboEvent.name" name="name">
@@ -9,6 +9,6 @@
     </form>
     <div class="buttons">
         <button class="btn" (click)="btnSaveClicked()">SAVE</button>
-        <button class="btn" (click)="btnCancelClicked()">CANCLE</button>
+        <button class="btn" (click)="btnCancelClicked()">CANCEL</button>
     </div>
 </div>

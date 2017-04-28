@@ -33,6 +33,7 @@ export class SetupEventComponent implements OnInit {
     this.setupService.getEvents()
       .then(res => { this.roboEvents = res as roboEvent[]; console.log('res: ' + JSON.stringify(res)); })
       .catch(err => this.errorHandler(err));
+    this.setupService.setupNav();
 }
 
   btnNewClicked(){
@@ -40,7 +41,9 @@ export class SetupEventComponent implements OnInit {
   }
 
   btnEditClicked(){
-    this.router.navigate(['/detail/', this.selectedEvent._id])
+    if(this.selectedEvent){
+    this.router.navigate(['setup/events/detail/', this.selectedEvent._id])
+    }
   }
 
   btnDeleteClicked(){
@@ -55,10 +58,10 @@ export class SetupEventComponent implements OnInit {
     }
 
   deleteEvents(roboEvent: roboEvent, cb?: Function): void{
-        console.log('deleteSchool' + roboEvent);
-        // this.setupService.deleteEvent(roboEvent)
-        //     .then(res => {if(res)this.schools.splice( this.schools.indexOf(school), 1); if(cb) cb();})
-        //     .catch(err => this.errorHandler(err));
+        console.log('deleteSchool' + JSON.stringify(roboEvent));
+          this.setupService.deleteEvent(roboEvent)
+            .then(res => {if(res)this.roboEvents.splice( this.roboEvents.indexOf(roboEvent), 1); if(cb) cb();})
+           .catch(err => this.errorHandler(err));
     }
 
   checkButtons(){

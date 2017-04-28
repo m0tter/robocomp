@@ -6,6 +6,7 @@ import 'rxjs/add/operator/switchMap';
 
 import { SetupService } from '../../../services/setup-event.service';
 import { RoboEvent } from 'robocomp';
+import { NavService } from '../../../services';
 
 @Component({
   selector: 'app-event-detail',
@@ -19,8 +20,31 @@ export class EventDetailComponent implements OnInit {
   constructor(
     private setupService: SetupService,
     private route: ActivatedRoute,
-    private location: Location
+    private location: Location,
+    private navService: NavService
   ){}
+
+  ngOnInit() {
+    this.navService.show();
+    this.route.params
+      .switchMap((params: Params) => {
+          if(params['id'] !== '0'){
+            this.newRoboEvent = false;
+            return this.setupService.getEventById(params['id'])
+            } else {
+              let roboEvent: RoboEvent = {
+                name: '',
+                date: '',
+                competitions: [],
+                isCurrent: true
+            }
+            this.newRoboEvent = true;
+            return Promise.resolve(roboEvent);
+          }
+      })
+    .subscribe(RoboEvent => this.roboEvent = <RoboEvent>RoboEvent)
+    this.setupService.setupNav();
+   }
 
   goBack(){
     this.location.back();
@@ -39,25 +63,5 @@ export class EventDetailComponent implements OnInit {
   btnCancelClicked(){
       this.goBack();
   }
-
-  ngOnInit() {
-    this.route.params
-      .switchMap((params: Params) => {
-          if(params['id'] !== '0'){
-            this.newRoboEvent = false;
-            return this.setupService.getEventById(params['id'])
-            } else {
-              let roboEvent: RoboEvent = {
-                name: '',
-                date: '',
-                competitions: [],
-                isCurrent: true
-            }
-            this.newRoboEvent = true;
-            return Promise.resolve(roboEvent);
-          }
-      })
-    .subscribe(RoboEvent => this.roboEvent = <RoboEvent>RoboEvent)
-   }
 
 }

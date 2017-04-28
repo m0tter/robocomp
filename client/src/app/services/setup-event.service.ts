@@ -8,15 +8,15 @@ import 'rxjs/add/operator/toPromise'
 import { AuthenticationService } from './authentication.service';
 import { RoboEvent } from 'robocomp';
 import { API_EVENT } from '../_api.paths';
+import { NavService } from './';
 
 
 @Injectable()
 export class SetupService {
-    private RoboEvent = '/src/api/';
-
+    private setupNavComplete = false;
     private options: RequestOptions;
 
-    constructor(private http: Http, private authService: AuthenticationService)
+    constructor(private http: Http, private authService: AuthenticationService, private navService: NavService)
     {this.options = this.authService.httpOptions();}
 
     getEvents(): Promise<RoboEvent[]> {
@@ -39,19 +39,41 @@ export class SetupService {
     }
 
     editEvent(roboEvent: RoboEvent): Promise<RoboEvent> {
-        return this.http.put(this.RoboEvent + roboEvent._id, roboEvent)
+        return this.http.put(API_EVENT + "/" + roboEvent._id, roboEvent)
         .toPromise()
         .then(resp => resp.json().data as RoboEvent)
         .catch(err => this.errorHandler(err));
     }
 
-    deleteEvent(){
+    deleteEvent(roboEvent: RoboEvent): Promise<boolean>{
+        return this.http.delete(API_EVENT + "/" + roboEvent._id)
+        .toPromise()
+        .then(resp => {
+            if(resp.json().data === roboEvent._id) return true; else return false;
+        })
+        .catch(err => this.errorHandler(err));
+    }
 
+    setupNav(): void{
+        if(!this.setupNavComplete){
+            this.navService.show();
+            this.navService.setNavItems([
+            {
+                name: 'Events',
+                route: 'setup/events'
+            },
+            {
+                name: 'Schools',
+                route: 'setup/schools'
+            }
+            ]);
+            this.setupNavComplete = true;
+        }
     }
 
     errorHandler(err: any): Promise<any>{
         //TODO: finish error handler
-        return Promise.reject("Something is broken, figure it out:" + err);
+        return Promise.reject("Something is broken in setup-event.service, here's your error:" + err);
     }
 }
 

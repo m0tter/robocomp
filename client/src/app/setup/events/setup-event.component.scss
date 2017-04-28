@@ -19,6 +19,11 @@
     display: table-row;
 }
 
+.detail-buttons {
+    color: #fff;
+    background-color: $rc-navyblue; 
+}
+
 [class^="setup-"] {
     display: table-cell;
     padding: 8px;
