@@ -31,7 +31,7 @@ export class SetupEventComponent implements OnInit {
   ngOnInit(): void{
     //console.log("ngOnInit");
     this.setupService.getEvents()
-      .then(res => { this.roboEvents = res as roboEvent[]; console.log('res: ' + JSON.stringify(res)); })
+      .then(res => this.roboEvents = res as roboEvent[])
       .catch(err => this.errorHandler(err));
     this.setupService.setupNav();
 }
@@ -41,20 +41,30 @@ export class SetupEventComponent implements OnInit {
   }
 
   btnEditClicked(){
-    if(this.selectedEvent){
-    this.router.navigate(['setup/events/detail/', this.selectedEvent._id])
+    this.checkButtons();
+    if(this.editDisabled == false){
+      if(this.selectedEvent){
+        this.router.navigate(['setup/events/detail/', this.selectedEvent._id])
+      }
+    } else {
+      console.log("[IN setup-events.component.ts] Will not edit as editDisabled is true");
     }
   }
 
   btnDeleteClicked(){
-    for(let s of this.roboEvents){
-            if(s.selected) this.deleteEvents(s, (cb: void) => {this.checkButtons});
-        }
+    this.checkButtons();
+    if(this.deleteDisabled == false){
+      for(let s of this.roboEvents){
+          if(s.selected) this.deleteEvents(s, (cb: void) => {this.checkButtons});
+      }
+    } else {
+      console.log("[IN setup-events.component.ts] Will not delete as deleteDisabled is true");
+    }
   }
 
   eventSelect_Clicked($index: number){
         this.roboEvents[$index].selected = !this.roboEvents[$index].selected;
-        this.checkButtons();
+        this.checkButtons();  
     }
 
   deleteEvents(roboEvent: roboEvent, cb?: Function): void{
@@ -74,7 +84,9 @@ export class SetupEventComponent implements OnInit {
       this.editDisabled = false; 
       this.selectedEvent = roboEvents[0];
     }
-      if(roboEvents.length > 0) this.deleteDisabled = false;
+      if(roboEvents.length > 0){
+        this.deleteDisabled = false;
+      }
   }
 
   errorHandler(err : any) { console.log("An error has occured in SetupEventComponent:" + err)}
