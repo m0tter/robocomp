@@ -2,13 +2,30 @@
     <div class="heading" *ngIf="newRoboEvent">New Event</div>
     <div class="heading" *ngIf="!newRoboEvent">Edit Event</div>
     <form>
-        <div class="inputBox" *ngIf="roboEvent">
-            <input type="text" placeholder="Event Name" [(ngModel)]="roboEvent.name" name="name">
-            <input type="text" placeholder="Event Date" [(ngModel)]="roboEvent.date" name="date">
+        <div class="inputBoxs" *ngIf="roboEvent">
+            <input mdInput class="inputBox" type="text" placeholder="Event Name" [(ngModel)]="roboEvent.name" name="name">
+            <input mdInput class="inputBox" type="text" placeholder="Event Date" [(ngModel)]="roboEvent.date" name="date">
         </div>
     </form>
+    <!--
+    <div class="compsInput-table">
+        <div class="compInput-header">
+            <div class="compInput-select">&nbsp;</div>
+            <div class="compInput-name">Competion Name</div>
+            <div class="compInput-type">Competion Score Type</div>
+        </div>
+        <div class="compInput-content">
+            
+        </div>
+        <div class="compInput-newComp">
+            <button md-raised-button class="btn-save">+</button>
+            <input type="text" placeholder="New Competion Name" [(ngModel)]="roboEvent.competions.name" name="compName">
+            <input type="text" placeholder="New Competion Score Type" [(ngModel)]="roboEvent.competions.type" name="compType">
+        </div>
+    </div>
+    -->
     <div class="buttons">
-        <button class="btn" (click)="btnSaveClicked()">SAVE</button>
-        <button class="btn" (click)="btnCancelClicked()">CANCEL</button>
+        <button md-raised-button class="btn" (click)="btnSaveClicked()">SAVE</button>
+        <button md-raised-button class="btn" (click)="btnCancelClicked()">CANCEL</button>
     </div>
 </div>

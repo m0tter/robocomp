@@ -4,15 +4,36 @@
   padding: 20px;
 }
 
+.btn{
+  background-color: $rc-navyblue;
+  color: #fff;
+}
+
 .heading{
   font-weight: bold;
 }
 
-.inputBox{
+.inputBoxs{
   padding-top: 10px;
   padding-bottom: 5px;
 }
 
+.inputBox{
+  font-size: 100;
+  height: 20px;
+}
+
 .buttons{
   padding-top: 5px;
+}
+
+.compInput-table{
+  padding: 5px;
+  display: table;
+  border: 1px solid #42a5f5;
+}
+
+[class^="compInput-"] {
+    display: table-cell;
+    padding: 8px;
 }

@@ -16,12 +16,18 @@ import { NavService } from '../../../services';
 export class EventDetailComponent implements OnInit {
   private roboEvent: RoboEvent;
   private newRoboEvent: boolean;
+  private emptyRoboEvent: RoboEvent = {
+      name: '',
+      date: '',
+      competitions: [],
+      isCurrent: true
+    }
 
   constructor(
     private setupService: SetupService,
     private route: ActivatedRoute,
     private location: Location,
-    private navService: NavService
+    private navService: NavService,
   ){}
 
   ngOnInit() {
@@ -32,11 +38,11 @@ export class EventDetailComponent implements OnInit {
             this.newRoboEvent = false;
             return this.setupService.getEventById(params['id'])
             } else {
-              let roboEvent: RoboEvent = {
-                name: '',
-                date: '',
-                competitions: [],
-                isCurrent: true
+                let roboEvent: RoboEvent = {
+                  name: '',
+                  date: '',
+                  competitions: [],
+                  isCurrent: true
             }
             this.newRoboEvent = true;
             return Promise.resolve(roboEvent);
@@ -51,14 +57,18 @@ export class EventDetailComponent implements OnInit {
   }
 
   btnSaveClicked(){
-    if(this.newRoboEvent){
-            this.setupService.newEvent(this.roboEvent)
-            .then( resp => {this.goBack();})
-        } else {
-            this.setupService.editEvent(this.roboEvent)
-            .then( resp => {this.goBack();})
-        }
-  }
+    if(JSON.stringify(this.roboEvent) !== JSON.stringify(this.emptyRoboEvent)){
+      if(this.newRoboEvent){
+              this.setupService.newEvent(this.roboEvent)
+              .then( resp => {this.goBack();})
+          } else {
+              this.setupService.editEvent(this.roboEvent)
+              .then( resp => {this.goBack();})
+          }
+    } else {
+      console.log("The fields are empty, cannot save");
+    }
+    }
 
   btnCancelClicked(){
       this.goBack();
