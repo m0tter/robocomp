@@ -29,11 +29,11 @@
 
 .compInput-table{
   padding: 5px;
-  display: table;
   border: 1px solid #42a5f5;
+  display: table;
 }
 
 [class^="compInput-"] {
-    display: table-cell;
+    display: table-row-group;
     padding: 8px;
 }
