@@ -8,14 +8,22 @@ import 'rxjs/add/operator/toPromise'
 import { AuthenticationService } from './authentication.service';
 import { RoboEvent } from 'robocomp';
 import { API_EVENT } from '../_api.paths';
+import { NavService } from './nav.service';
 
 
 @Injectable()
 export class SetupService {
     private options: RequestOptions;
+    private _isNavSetup = false;
 
-    constructor(private http: Http, private authService: AuthenticationService)
-    {this.options = this.authService.httpOptions();}
+    constructor (
+        private http: Http, 
+        private authService: AuthenticationService,
+        private navService: NavService ) 
+    {
+        this.options = this.authService.httpOptions();
+        if(!this._isNavSetup) this.setupNav();
+    }
 
     getEvents(): Promise<RoboEvent[]> {
         return this.http.get(API_EVENT, this.options)
@@ -27,6 +35,25 @@ export class SetupService {
     getEventById(id: string): Promise<RoboEvent> {
         return this.getEvents()
         .then(events => events.find(event => event._id === id));
+    }
+
+    setupNav() {
+        this.navService.show();
+        this.navService.setNavItems([
+            {
+                name: 'Events',
+                route: 'setup/events'
+            },
+            {
+                name: 'Schools',
+                route: 'setup/schools'
+            },
+            {
+                name: 'Users',
+                route: 'setup/users'
+            }
+        ]);
+        this._isNavSetup = true;
     }
 
     errorHandler(error: any): Promise<any>{

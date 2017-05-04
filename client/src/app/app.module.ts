@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
 
@@ -22,6 +22,8 @@ import { SetupComponent } from './setup/setup.component';
 import { SetupEventComponent } from './setup/events/setup-event.component';
 import { SetupSchoolComponent } from './setup/schools/setup-school.component';
 import { NewSchoolComponent } from './setup/schools/new-school/new-school.component';
+import { UsersComponent } from './setup/users/users.component';
+import { UserDialogComponent } from './setup/users/user-dialog.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { NewSchoolComponent } from './setup/schools/new-school/new-school.compon
     SetupEventComponent,
     SetupSchoolComponent,
     SideNavComponent,
-    NewSchoolComponent
+    NewSchoolComponent,
+    UsersComponent,
+    UserDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +46,8 @@ import { NewSchoolComponent } from './setup/schools/new-school/new-school.compon
     HttpModule,
     AppRoutes,
     SetupRoutes,
-    MaterialModule.forRoot()
+    MaterialModule.forRoot(),
+    ReactiveFormsModule
   ],
   providers: [
     NavService,
@@ -52,6 +57,11 @@ import { NewSchoolComponent } from './setup/schools/new-school/new-school.compon
     RobocompService,
     SetupService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [
+    AppComponent  
+  ],
+  entryComponents: [
+    UserDialogComponent
+  ]
 })
 export class AppModule { }
