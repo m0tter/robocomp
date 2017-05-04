@@ -4,11 +4,21 @@ export interface SchoolBase {
   contactNumber: string;
   contactEmail: string;
   address: string;
-  teams: string[];
+  teams: Team[];
   isCurrent: boolean;
 }
 
 export interface School extends SchoolBase {
+  _id?: string;
+}
+
+export interface TeamBase {
+  name: string;
+  memberCount: number;
+  isCurrent: boolean;
+}
+
+export interface Team extends TeamBase {
   _id?: string;
 }
 

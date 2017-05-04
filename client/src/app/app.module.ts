@@ -7,7 +7,7 @@ import { MaterialModule } from '@angular/material';
 import { AppRoutes }  from './app.routes';
 import { SetupRoutes } from './setup/setup.routes';
 
-import { NavService, AuthenticationService, UserService, RobocompService } from './services';
+import { NavService, AuthenticationService, UserService, RobocompService, SetupSchoolService } from './services';
 import { AuthGuard } from './guards';
 
 import { AppComponent } from './app.component';
@@ -48,7 +48,8 @@ import { EditSchoolsComponent } from './setup/schools/edit-schools/edit-schools.
     AuthenticationService,
     UserService,
     AuthGuard,
-    RobocompService
+    RobocompService,
+    SetupSchoolService
   ],
   bootstrap: [AppComponent]
 })
