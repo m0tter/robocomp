@@ -1,0 +1,23 @@
+<div md-dialog-title *ngIf="_newUser">New User</div>
+<div md-dialog-content class="container">
+  <form [formGroup]="userForm" (ngSubmit)="submitForm($event)">
+    <div>
+      <md-input-container>
+        <input mdInput formControlName="email" placeholder="Email" size="40">
+      </md-input-container>
+    </div>
+    <div *ngIf="_newUser">
+      <md-input-container>
+        <input mdInput formControlName="password" placeholder="Password" type="password">
+      </md-input-container>
+    </div>
+    <div>
+      <span><md-checkbox formControlName="isAdmin">Is Admin</md-checkbox></span>
+      <span class="chkbox"><md-checkbox formControlName="canEdit">Can Edit</md-checkbox></span>
+    </div>
+  </form>
+</div>
+<div md-dialog-actions>
+  <button md-button (click)="save()" [disabled]="!userForm.dirty && !userForm.valid">Save</button>
+  <button md-button (click)="dialogRef.close()">Cancel</button>
+</div>
