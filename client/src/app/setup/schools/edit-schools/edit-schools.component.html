@@ -1,0 +1,19 @@
+<div class="edit-schools">
+    <div *ngIf="newSchool">New School</div>
+    <div *ngIf="!newSchool">Edit School</div>
+    <form name="school-details">
+        <div *ngIf="school">
+            <div class="input"><input type="text" placeholder="School Name"[(ngModel)]="school.name" name="name"></div>
+            <div class="input"><input placeholder="Contact Name"[(ngModel)]="school.contactName" name="contactName"></div>
+            <div class="input"><input placeholder="Contact Email"[(ngModel)]="school.contactEmail" name="contactEmail"></div>
+            <div class="input"><input type="text" placeholder="Contact Number"[(ngModel)]="school.contactNumber" name="contactNumber"></div>
+            <div class="input"><input type="text" placeholder="Address"[(ngModel)]="school.address" name="address"></div>
+            <div class="input"><input type="text" placeholder="Teams"></div>
+        </div>
+    </form>
+    <div class ="buttons">
+        <button class="btn" (click)="addTeam_Clicked()">+</button>
+        <button class="btn" (click)="cancelSchool_Clicked()">Cancel</button>
+        <button class="btn" (click)="saveSchool_Clicked()">Save</button>
+    </div>
+</div>

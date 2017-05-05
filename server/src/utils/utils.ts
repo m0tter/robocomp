@@ -32,16 +32,19 @@ export function tokenCheck(req: Request, res: Response, next: NextFunction){
     if( token ) {
       jwt.verify( token, AUTH_SECRET, ( err: any, decoded: any ) => {
         if( err ) {
-          res.status( 401 ).json({ 'success': 'false', 'message': '401 - NOT AUTHORISED' });
+          console.log('pop 1');
+          res.status( 401 ).json({ 'success': false, 'data': '401 - NOT AUTHORISED' });
         } else {
           authReq.token = decoded;
           next();
         }
       });
     } else {
+      console.log('pop 2');
       res.status( 401 ).send('401 - NOT AUTHORISED');
     }
-  }else {
+  } else {
+    console.log('pop 3')
     res.status( 401 ).send('401 - NOT AUTHORISED');
   }
 }

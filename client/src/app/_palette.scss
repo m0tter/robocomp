@@ -1,5 +1,14 @@
+@import "../styles.scss";
+
 $rc-darkgrey: #4f4f4f;
 $rc-lightgrey: #9f9f9f;
 $rc-darkwhite: #efefef;
 $rc-navyblue: #214060;
 $rc-lightblue: #99b3ff;
+$rc-blue400: mat-color($mat-blue, 400, 1);
+$rc-blue800: mat-color($mat-blue, 800, 1);
+$rc-blue200: mat-color($mat-blue, 200, 1);
+$rc-orange200: mat-color($mat-orange, 200, 1);
+$rc-orange400: mat-color($mat-orange, 400, 1);
+$rc-orange600: mat-color($mat-orange, 600, 1);
+$rc-orange800: mat-color($mat-orange, 800, 1);

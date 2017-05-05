@@ -4,7 +4,7 @@ import { Location }               from '@angular/common';
 
 import 'rxjs/add/operator/switchMap';
 
-import { SetupService } from '../../../services/setup-event.service';
+import { SetupEventService } from '../../../services';
 import { RoboEvent } from 'robocomp';
 import { NavService } from '../../../services';
 
@@ -24,7 +24,7 @@ export class EventDetailComponent implements OnInit {
     }
 
   constructor(
-    private setupService: SetupService,
+    private setupService: SetupEventService,
     private route: ActivatedRoute,
     private location: Location,
     private navService: NavService,

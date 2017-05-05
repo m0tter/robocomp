@@ -4,7 +4,7 @@ import { ActivatedRoute, Params }   from '@angular/router';
 import { Location }                 from '@angular/common';
 import { RoboEvent }                from 'robocomp';
 import { Router }                   from '@angular/router';
-import { SetupService }             from '../../services/setup-event.service';
+import { SetupEventService }             from '../../services/setup-event.service';
 import 'rxjs/add/operator/switchMap';
 
 interface roboEvent extends RoboEvent {
@@ -26,7 +26,7 @@ export class SetupEventComponent implements OnInit {
   private editDisabled: boolean = true;
   private deleteDisabled: boolean = true;
 
-  constructor(private setupService: SetupService, private router: Router){} 
+  constructor(private setupService: SetupEventService, private router: Router){} 
 
   ngOnInit(): void{
     //console.log("ngOnInit");
@@ -90,5 +90,4 @@ export class SetupEventComponent implements OnInit {
   }
 
   errorHandler(err : any) { console.log("An error has occured in SetupEventComponent:" + err)}
-
 }
