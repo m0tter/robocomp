@@ -32,21 +32,21 @@ export class SetupService {
     }
 
     newEvent(roboEvent: RoboEvent): Promise<RoboEvent> {
-        return this.http.post(API_EVENT, roboEvent)
+        return this.http.post(API_EVENT, roboEvent, this.options)
         .toPromise()
         .then(resp => resp.json().data as RoboEvent)
         .catch(err => this.errorHandler(err));
     }
 
     editEvent(roboEvent: RoboEvent): Promise<RoboEvent> {
-        return this.http.put(API_EVENT + "/" + roboEvent._id, roboEvent)
+        return this.http.put(API_EVENT + "/" + roboEvent._id, roboEvent, this.options)
         .toPromise()
         .then(resp => resp.json().data as RoboEvent)
         .catch(err => this.errorHandler(err));
     }
 
     deleteEvent(roboEvent: RoboEvent): Promise<boolean>{
-        return this.http.delete(API_EVENT + "/" + roboEvent._id)
+        return this.http.delete(API_EVENT + "/" + roboEvent._id, this.options)
         .toPromise()
         .then(resp => {
             if(resp.json().data === roboEvent._id) return true; else return false;
