@@ -21,11 +21,11 @@ import { SideNavComponent } from './side-nav';
 import { SetupComponent } from './setup/setup.component';
 import { SetupEventComponent } from './setup/events/setup-event.component';
 import { SetupSchoolComponent } from './setup/schools/setup-school.component';
+import { EventDetailComponent } from './setup/events/event-detail/event-detail.component';
 import { EditSchoolsComponent } from './setup/schools/edit-schools/edit-schools.component';
 import { NewSchoolComponent } from './setup/schools/new-school/new-school.component';
 import { UsersComponent } from './setup/users/users.component';
 import { UserDialogComponent } from './setup/users/user-dialog.component';
-
 
 @NgModule({
   declarations: [
@@ -38,6 +38,7 @@ import { UserDialogComponent } from './setup/users/user-dialog.component';
     SetupEventComponent,
     SetupSchoolComponent,
     SideNavComponent,
+    EventDetailComponent,
     EditSchoolsComponent,
     NewSchoolComponent,
     UsersComponent,
