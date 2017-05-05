@@ -7,7 +7,7 @@ import { MaterialModule } from '@angular/material';
 import { AppRoutes }  from './app.routes';
 import { SetupRoutes } from './setup/setup.routes';
 
-import { NavService, AuthenticationService, UserService, RobocompService} from './services';
+import { NavService, AuthenticationService, UserService, RobocompService, SetupSchoolService } from './services';
 import { SetupService } from './services';
 import { AuthGuard } from './guards';
 
@@ -21,9 +21,11 @@ import { SideNavComponent } from './side-nav';
 import { SetupComponent } from './setup/setup.component';
 import { SetupEventComponent } from './setup/events/setup-event.component';
 import { SetupSchoolComponent } from './setup/schools/setup-school.component';
+import { EditSchoolsComponent } from './setup/schools/edit-schools/edit-schools.component';
 import { NewSchoolComponent } from './setup/schools/new-school/new-school.component';
 import { UsersComponent } from './setup/users/users.component';
 import { UserDialogComponent } from './setup/users/user-dialog.component';
+
 
 @NgModule({
   declarations: [
@@ -36,6 +38,7 @@ import { UserDialogComponent } from './setup/users/user-dialog.component';
     SetupEventComponent,
     SetupSchoolComponent,
     SideNavComponent,
+    EditSchoolsComponent
     NewSchoolComponent,
     UsersComponent,
     UserDialogComponent
@@ -55,6 +58,7 @@ import { UserDialogComponent } from './setup/users/user-dialog.component';
     UserService,
     AuthGuard,
     RobocompService,
+    SetupSchoolService
     SetupService
   ],
   bootstrap: [
