@@ -9,7 +9,7 @@ import { UsersComponent } from './users/users.component';
 const SETUP_ROUTES: Routes = [
   { path: 'setup/events', component: SetupEventComponent },
   { path: 'setup/schools', component: SetupSchoolComponent },
-  { path: 'setup/schools/edit/:id', component: EditSchoolsComponent} 
+  { path: 'setup/schools/edit/:id', component: EditSchoolsComponent},
   { path: 'setup/schools/new', component: NewSchoolComponent },
   { path: 'setup/users', component: UsersComponent }
 ]
