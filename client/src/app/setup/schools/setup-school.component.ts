@@ -17,5 +17,4 @@ export class SetupSchoolComponent {
 newSchool():void {
   this.router.navigate(['setup/schools/edit/0']);
 }
-
 }

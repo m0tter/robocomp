@@ -25,6 +25,8 @@ a {
 }
 a:visited { color: $rc-darkwhite; }
 a:hover { text-decoration: underline; }
+
 .routeactive {
   background-color: $rc-lightgrey;
+  padding: 5px;
 }
