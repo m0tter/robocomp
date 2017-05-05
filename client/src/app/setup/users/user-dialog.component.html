@@ -1,4 +1,5 @@
 <div md-dialog-title *ngIf="_newUser">New User</div>
+<div md-dialog-title *ngIf="!_newUser">Edit User</div>
 <div md-dialog-content class="container">
   <form [formGroup]="userForm" (ngSubmit)="submitForm($event)">
     <div>

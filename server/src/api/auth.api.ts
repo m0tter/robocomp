@@ -36,11 +36,12 @@ export class AuthAPI {
   }
 
   private incorrectUserPassword(res: Response) {
+    this.errorHandler('incorrect username or password');
     res.status(200).json({'success': false, 'data': 'Incorrect username or password.'});
   }
 
   private errorHandler(error: any, response?: Response): void {
     console.error( 'Error in auth.api.ts - ' + (error.message || error) );
-    response.status( 500 ).send('Error in auth.api.ts - ' + (error.message || error));
+    if(response) response.status( 500 ).send('Error in auth.api.ts - ' + (error.message || error));
   }
 }

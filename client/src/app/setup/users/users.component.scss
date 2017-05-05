@@ -11,7 +11,10 @@
 
 .newButton {
   color: white;
-  background-color: $rc_orange600;
+  background-color: $rc_orange400;
+}
+.mat-button[disabled] {
+  background-color: $rc_orange200;
 }
 
 .actionButtons {

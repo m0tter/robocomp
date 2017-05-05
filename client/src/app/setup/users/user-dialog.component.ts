@@ -27,6 +27,11 @@ export class UserDialogComponent implements OnInit {
     }
   }
 
+  editUser(user: User) {
+    this.user = user;
+    this._newUser = false;
+  }
+
   buildForm() { 
     this.userForm = this.formBuilder.group({
       email: [this.user.email, Validators.required],
