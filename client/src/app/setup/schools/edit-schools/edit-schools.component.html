@@ -8,11 +8,14 @@
     <div class="input"><input placeholder="Contact Email"[(ngModel)]="school.contactEmail" name="contactEmail"></div>
     <div class="input"><input type="text" placeholder="Contact Number"[(ngModel)]="school.contactNumber" name="contactNumber"></div>
     <div class="input"><input type="text" placeholder="Address"[(ngModel)]="school.address" name="address"></div>
-    <div class="input"><input type="text" placeholder="Teams"
+    <button class="add-button" (click)="addTeam_Clicked()" md-mini-fab><md-icon>+</md-icon></button>
+    <span class="input"><input type="text" placeholder="Team Name"[(ngModel)]="school.teams" name="teamNames"></span>
+    <button class="add-button" (click)="addTeam_Clicked()" md-mini-fab><md-icon>+</md-icon></button>
+    <span class="input"><input type="text" placeholder="Team Members"[(ngModel)]="school.teams" name="teamMemebers"></span>
         </div>
     </form>
     <div class ="buttons">
-<button class="btn" (click)="addTeam_Clicked()">+</button>
+
 <button class="btn" (click)="cancelSchool_Clicked()">Cancel</button>
 <button class="btn" (click)="saveSchool_Clicked()">Save</button>
     </div>
