@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { NavService } from '../services';
+import { SetupService } from '../services';
 
 @Component({
   selector: 'app-setup',
@@ -9,20 +9,12 @@ import { NavService } from '../services';
 })
 export class SetupComponent implements OnInit {
 
-  constructor(private navService: NavService) { }
+  constructor(private setupService: SetupService) {
+    this.setupService.setupNav();
+   }
 
   buildSideNav(): void {
-    this.navService.show();
-    this.navService.setNavItems([
-      {
-        name: 'Events',
-        route: 'setup/events'
-      },
-      {
-        name: 'Schools',
-        route: 'setup/schools'
-      }
-    ]);
+   
   }
 
   ngOnInit() {

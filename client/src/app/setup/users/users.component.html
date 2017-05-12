@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="buttonContainer">
+    <button md-button class="newButton" type="button" (click)="btnNew_Clicked()">New</button>
+    <div class="actionButtons">
+      <button md-button class="actionButton" type="button" (click)="btnEdit_Clicked()">Edit</button>
+      <button md-button class="actionButton" type="button" (click)="btnDelete_Clicked()">Delete</button>
+    </div>
+  </div>
+    <div class="list-container">
+      <div class="users-grid">
+        <div class="header">
+          <div class="user-select">&nbsp;</div>
+          <div class="user-email">Email</div>
+          <div class="user-isadmin">Admin</div>
+          <div class="user=canedit">Edit</div>
+        </div>
+        <div class="row" *ngFor="let user of _users; let i=index">
+          <div class="user-select"><md-checkbox color="primary" (click)="userSelected(i)"></md-checkbox></div>
+          <div class="user-email">{{user.email}}</div>
+          <div class="user-isadmin"><md-checkbox color="primary" [checked]="user.isAdmin" [disabled]="true"></md-checkbox></div>
+          <div class="user-canedit"><md-checkbox color="primary" [checked]="user.canEdit" [disabled]="true"></md-checkbox></div>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -10,7 +10,7 @@ import { User } from 'robocomp';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  user: User = { username: '', password: '', email: '', isAdmin: false };
+  user: User = { username: '', password: '', email: '', isAdmin: false, canEdit: false };
   loading = false; 
   error = '';
 
@@ -22,6 +22,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.navService.hide();
+    if(this.authService.loginTimedOut) this.error = "Your login has timed out, please log in again";
+    this.authService.loginTimedOut = false;
     // this.authService.logout();
   }
 

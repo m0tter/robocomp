@@ -33,6 +33,7 @@ export interface UserBase {
   password: string;
   email: string;
   isAdmin: boolean;
+  canEdit: boolean;
 }
 
 export interface User extends UserBase {
