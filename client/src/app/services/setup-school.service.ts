@@ -28,17 +28,26 @@ return this.getSchool()
 }
 
 newSchool(school: School): Promise<School>{
-    return this.http.post(API_SCHOOL, school)
+    return this.http.post(API_SCHOOL, school, this.options)
     .toPromise()
     .then(resp => resp.json().data as School)
     .catch(err => this.errorHandler(err));
 }
 
 editSchool(school: School): Promise<School>{
-return this.http.put(this.School + school._id, school)
+return this.http.put(API_SCHOOL + "/" + school._id, school, this.options)
 .toPromise()
 .then(resp => resp.json().data as School)
 .catch(err => this.errorHandler(err));
+}
+
+deleteSchool(school: School): Promise<boolean>{
+    return this.http.delete(API_SCHOOL + "/" + school._id, this.options)
+    .toPromise()
+    .then( resp => {
+        if(resp.json().data === school._id) return true; else return false;
+    })
+    .catch(err => this.errorHandler(err));
 }
 
 errorHandler(err: any): Promise<any>{

@@ -19,12 +19,16 @@
     display: table-row;
 }
 
+.header {
+    display: table-row;
+}
+
 [class^="setup-"] {
     display: table-cell;
     padding: 8px;
 }
 
-.setup-selected { width: 20px; }
+.setup-select { width: 20px; }
 .setup-name { width: 120px; }
 .setup-contact {width: 150px; }
 .setup-email {width: 200px; }
