@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
   login() {
     this.loading = true;
     this.authService.login(this.user.username, this.user.password)
-      .subscribe( result => {
+      .then( result => {
         if( result === LoginResult.success )
           this.router.navigate( ['/'] );
         else if( result === LoginResult.failed )

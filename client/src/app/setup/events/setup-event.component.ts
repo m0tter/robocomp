@@ -3,9 +3,13 @@ import { Component, OnInit }        from '@angular/core';
 import { ActivatedRoute, Params }   from '@angular/router';
 import { Location }                 from '@angular/common';
 import { RoboEvent }                from 'robocomp';
-import { SetupService }             from '../../services/setup.service';
+import { Router }                   from '@angular/router';
+import { SetupEventService }             from '../../services/setup-event.service';
 import 'rxjs/add/operator/switchMap';
 
+interface roboEvent extends RoboEvent {
+    selected: boolean;
+}
 
 @Component({
   selector: 'setup-event',
@@ -14,16 +18,76 @@ import 'rxjs/add/operator/switchMap';
 })
 
 export class SetupEventComponent implements OnInit {
-  private roboEvents: RoboEvent[];
+  private roboEvents: roboEvent[];
+  private selectedEvent: RoboEvent;
+  //private roboEvent: RoboEvent;
+  private newRoboEvent: boolean;
 
-  constructor( private setupService: SetupService ){ }
+  private editDisabled: boolean = true;
+  private deleteDisabled: boolean = true;
+
+  constructor(private setupService: SetupEventService, private router: Router){} 
 
   ngOnInit(): void{
-    console.log("ngInit");
+    //console.log("ngOnInit");
     this.setupService.getEvents()
-      .then(res => this.roboEvents = res )
+      .then(res => this.roboEvents = res as roboEvent[])
       .catch(err => this.errorHandler(err));
-   }
+    this.setupService.setupNav();
+}
 
-   errorHandler(err: any) { console.error('something went wrong in SetupEventComponent:' + err); }
+  btnNewClicked(){
+    this.router.navigate(['setup/events/detail/0']);
+  }
+
+  btnEditClicked(){
+    this.checkButtons();
+    if(this.editDisabled == false){
+      if(this.selectedEvent){
+        this.router.navigate(['setup/events/detail/', this.selectedEvent._id])
+      }
+    } else {
+      console.log("[IN setup-events.component.ts] Will not edit as editDisabled is true");
+    }
+  }
+
+  btnDeleteClicked(){
+    this.checkButtons();
+    if(this.deleteDisabled == false){
+      for(let s of this.roboEvents){
+          if(s.selected) this.deleteEvents(s, (cb: void) => {this.checkButtons});
+      }
+    } else {
+      console.log("[IN setup-events.component.ts] Will not delete as deleteDisabled is true");
+    }
+  }
+
+  eventSelect_Clicked($index: number){
+        this.roboEvents[$index].selected = !this.roboEvents[$index].selected;
+        this.checkButtons();  
+    }
+
+  deleteEvents(roboEvent: roboEvent, cb?: Function): void{
+        console.log('deleteSchool' + JSON.stringify(roboEvent));
+          this.setupService.deleteEvent(roboEvent)
+            .then(res => {if(res)this.roboEvents.splice( this.roboEvents.indexOf(roboEvent), 1); if(cb) cb();})
+           .catch(err => this.errorHandler(err));
+    }
+
+  checkButtons(){
+    this.editDisabled = true;
+    this.deleteDisabled = true;
+
+    let roboEvents = this.roboEvents.filter(event => event.selected === true)
+
+    if(roboEvents.length === 1){
+      this.editDisabled = false; 
+      this.selectedEvent = roboEvents[0];
+    }
+      if(roboEvents.length > 0){
+        this.deleteDisabled = false;
+      }
+  }
+
+  errorHandler(err : any) { console.log("An error has occured in SetupEventComponent:" + err)}
 }

@@ -31,22 +31,22 @@ export class UserService {
       .catch((err) => this.errorHandler(err));   
   }
 
-  saveUser(user: User): Promise<User> {
-    return this.http.put(API_USER + '/' + user._id, this.options)
+  editUser(user: User): Promise<User> {
+    return this.http.put(API_USER + '/' + user._id, user, this.options)
       .toPromise()
       .then(res => {
         let json = res.json();
-        if(json.success) return Promise.resolve(json.data);
+        if(json.success) return Promise.resolve(<User>json.data);
         else {
-          this.errorHandler('error updating user record: ' + json.data);
-          return Promise.reject('error updating user record, please check server logs.')
+          this.errorHandler('error updating user: ' + json.data);
+          return Promise.reject('error updating user, please check server logs.');
         }
-      })
+       })
       .catch(err => this.errorHandler(err));
   }
 
   newUser(user: User): Promise<User> {
-    return this.http.post(API_USER, this.options)
+    return this.http.post(API_USER, user, this.options)
       .toPromise()
       .then((res) => {
         let json = res.json();

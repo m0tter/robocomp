@@ -58,6 +58,24 @@ export class RoboEventAPI {
         });
       }
     });
+
+    this.router.put('/:id', bparser.json(), (req, res) => {
+      RoboEventModel.findById(req.params.id, (err, evnt) => {
+        if(err) this.errorHandler(err, res);
+          else{
+            let data = req.body as RoboEvent;
+            if(data.name) evnt.name = data.name;
+            if(data.date) evnt.date = data.date;
+            if(data.isCurrent) evnt.isCurrent = data.isCurrent;
+
+            evnt.save((saveErr, result) => {
+              if(saveErr) this.errorHandler(saveErr, res);
+              else res.status(200).json({'success': true, 'data': result});
+            });
+          }
+        })
+    })
+
   }
 
   private errorHandler( err: any, res?: Response ) {

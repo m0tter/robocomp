@@ -1,14 +1,20 @@
-<div class="EventSetup">
-    <a md-button class="btn">New</a>
-    <a md-button class="btn">Edit</a>
+<div class="whole-setup-event">
     <div class="container">
-        <div class="grid">
+        <div class="event-setup-buttons">
+            <button md-raised-button class="detail-buttons" type="button" (click)="btnNewClicked()">NEW EVENT</button>
+            <button md-raised-button class="detail-buttons" (click)="btnEditClicked()">EDIT EVENT</button>
+            <button md-raised-button class="detail-buttons" (click)="btnDeleteClicked()">DELETE EVENT</button>
+        </div>
+        <div class="event-table">
             <div class="header">
-                <div class="ev-select">&nbsp;</div>
-                <div class="ev-name">Name</div>
-                <div class="ev-Date">Date</div>
+                <div class="setup-select">&nbsp;</div>
+                <div class="setup-name">Event Name</div>
+                <div class="setup-date">Event Date</div>
             </div>
-            <div class="events">
+            <div class="event" *ngFor="let event of roboEvents; let i = index;">
+                <div class="setup-select"><input type="checkbox" (click)="eventSelect_Clicked(i)"></div>
+                <div class="setup-name">{{event.name}}</div>
+                <div class="setup-date">{{event.date}}</div>
             </div>
         </div>
     </div>
