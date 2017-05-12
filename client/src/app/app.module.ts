@@ -38,7 +38,7 @@ import { UserDialogComponent } from './setup/users/user-dialog.component';
     SetupEventComponent,
     SetupSchoolComponent,
     SideNavComponent,
-    EditSchoolsComponent
+    EditSchoolsComponent,
     NewSchoolComponent,
     UsersComponent,
     UserDialogComponent
@@ -58,7 +58,7 @@ import { UserDialogComponent } from './setup/users/user-dialog.component';
     UserService,
     AuthGuard,
     RobocompService,
-    SetupSchoolService
+    SetupSchoolService,
     SetupService
   ],
   bootstrap: [

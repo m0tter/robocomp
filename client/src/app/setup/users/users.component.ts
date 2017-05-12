@@ -35,13 +35,13 @@ export class UsersComponent implements OnInit, OnDestroy {
     this.newUser();
   }
 
-  ngOnInit() {
-    this.setupService.setupNav();
+ ngOnInit() {
+   this.setupService.setupNav();
 
-    this._subs.add(
-      this.userService.getUsers()
-        .subscribe(res => this._users = res , err => this.errorHandler(err))
-    );
+    // this._subs.add(
+    //   this.userService.getUsers()
+    //     .subscribe(res => this._users = res , err => this.errorHandler(err))
+    //);
   }
 
   ngOnDestroy() {
