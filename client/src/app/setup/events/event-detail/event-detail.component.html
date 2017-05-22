@@ -1,38 +1,45 @@
 <div class="event-details">
+    <div>
     <div class="heading" *ngIf="newRoboEvent">New Event</div>
     <div class="heading" *ngIf="!newRoboEvent">Edit Event</div>
-    <form>
-        <div class="inputBoxs" *ngIf="roboEvent">
-            <input mdInput class="inputBox" type="text" placeholder="Event Name" [(ngModel)]="roboEvent.name" name="name">
-            <input mdInput class="inputBox" type="text" placeholder="Event Date" [(ngModel)]="roboEvent.date" name="date">
-        </div>
-    </form>
-    <!--  THIS IS ALL UNFINISHED COMPETION ENTERY
-    <div>&nbsp;</div>
-    <div class="compsInput-table">
-        <div class="compInput-header">
-            <div class="compInput-select">&nbsp;</div>
-            <div class="compInput-name">Competion Name</div>
-            <div class="compInput-type">Competion Score Type</div>
-        </div>
-        <div class="compInput-content">
-            <button>-</button>
-            <div>Example Name</div>
-            <div>Example Score Type</div>
-        </div>
-        <div class="compInput-newComp">
-            <button md-raised-button class="btn-save">+</button>
-            <input type="text" placeholder="Name" [(ngModel)]="roboEvent.competions.name" name="compName">
-            <select class="dropdown" id = "myList" placeholder="Score Type">
-                <option value = "1">Number</option>
-                <option value = "2">Time</option>
-                <option value = "3">Boolean</option>
-            </select>
-        </div>
-    </div>
-    -->
     <div class="buttons">
         <button md-raised-button class="btn" (click)="btnSaveClicked()">SAVE</button>
         <button md-raised-button class="btn" (click)="btnCancelClicked()">CANCEL</button>
+    </div>
+    <form>
+        <div class="inputBoxs" *ngIf="eventCopy">
+            <div><div class="inputBoxNametag">Name:</div>
+            <input mdInput class="inputBox" type="text" placeholder="Event Name" [(ngModel)]="eventCopy.name" name="name">
+            </div>
+            <div><div class="inputBoxNametag">Date:</div> 
+            <input mdInput class="inputBox" type="text" placeholder="Event Date" [(ngModel)]="eventCopy.date" name="date">
+            </div>
+        </div>
+    </form>
+    </div>
+
+    <div class="compsInput-table">
+        <div class="compInput-header">
+            <div class="comp-saveDel">&nbsp;</div>
+            <div class="comp-name">Competion Name</div>
+            <div class="comp-scoreType">Competion Score Type</div>
+        </div>
+        <div class="compInput-savedContent" *ngFor="let comp of eventCopy.competitions; let i = index;">
+            <div class="comp-saveDel"><button (click)="btnMinusClicked(i)">-</button></div>
+            <div class="comp-name">{{comp.name}}</div>
+            <div class="comp-scoreType">{{changeCompTypeEnumToString(comp.type)}}</div>
+        </div>
+        <div class="compInput-newComp">
+            <div class="comp-saveDel"><button class="btn-save" (click)="btnPlusClicked()">+</button></div>
+            <div class="comp-name"><input type="text" placeholder="Name" [(ngModel)]="comp.name" name="compName"></div>
+            <div class="comp-scoreType">
+                <select class="dropdown"  id="myList" placeholder="Score Type" [(ngModel)]="comp.type" name="compType">
+                    <!-- <option *ngFor="let e of compTypeHack">{{e}}</option> -->
+                    <option value="0">Number</option>
+                    <option value="1">Time</option>
+                    <option value="2">Boolean</option>
+                </select>
+            </div>
+        </div>
     </div>
 </div>

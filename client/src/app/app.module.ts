@@ -8,7 +8,7 @@ import { AppRoutes }  from './app.routes';
 import { SetupRoutes } from './setup/setup.routes';
 
 import { NavService, AuthenticationService, UserService, RobocompService} from './services';
-import { SetupService } from './services';
+import { SetupEventService } from './services';
 import { AuthGuard } from './guards';
 
 import { AppComponent } from './app.component';
@@ -50,7 +50,7 @@ import { EventDetailComponent } from './setup/events/event-detail/event-detail.c
     UserService,
     AuthGuard,
     RobocompService,
-    SetupService
+    SetupEventService
   ],
   bootstrap: [AppComponent]
 })

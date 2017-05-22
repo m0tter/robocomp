@@ -1,0 +1,1 @@
+export const COMPTYPES = {number: 1, time: 2, boolean: 3};

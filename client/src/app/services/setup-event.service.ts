@@ -12,7 +12,7 @@ import { NavService } from './';
 
 
 @Injectable()
-export class SetupService {
+export class SetupEventService {
     private setupNavComplete = false;
     private options: RequestOptions;
 

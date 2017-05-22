@@ -66,6 +66,7 @@ export class RoboEventAPI {
             let data = req.body as RoboEvent;
             if(data.name) evnt.name = data.name;
             if(data.date) evnt.date = data.date;
+            if(data.competitions) evnt.competitions = data.competitions;
             if(data.isCurrent) evnt.isCurrent = data.isCurrent;
 
             evnt.save((saveErr, result) => {

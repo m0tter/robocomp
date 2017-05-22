@@ -2,10 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Location }               from '@angular/common';
 
-import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/switchMap'; 
+import 'rxjs/add/operator/do';
 
-import { SetupService } from '../../../services/setup-event.service';
-import { RoboEvent } from 'robocomp';
+import { SetupEventService } from '../../../services/setup-event.service';
+import { RoboEvent, Competition } from 'robocomp';
+import { COMPTYPES } from '../../../comp-types';
 import { NavService } from '../../../services';
 
 @Component({
@@ -14,6 +16,7 @@ import { NavService } from '../../../services';
   styleUrls: ['./event-detail.component.scss']
 })
 export class EventDetailComponent implements OnInit {
+  
   private roboEvent: RoboEvent;
   private newRoboEvent: boolean;
   private emptyRoboEvent: RoboEvent = {
@@ -22,13 +25,36 @@ export class EventDetailComponent implements OnInit {
       competitions: [],
       isCurrent: true
     }
+  
+  private comp: Competition = {
+    name: '',
+    type: 0
+  };
+  private emptyComp: Competition = {
+    name: '',
+    type: 0
+  };
+  private compTypeNames: string[];
+  private compTypeHack = COMPTYPES;
+
+  private eventCopy: RoboEvent ={
+      name: '',
+      date: '',
+      competitions: [],
+      isCurrent: true
+    };
+
+  //This is a hack, could cause promblems if extra score types are ever added. Fix later.
+  private compTypeEnumKey: string[] = ["Number", "Time", "Boolean"];
 
   constructor(
-    private setupService: SetupService,
+    private setupService: SetupEventService,
     private route: ActivatedRoute,
     private location: Location,
-    private navService: NavService,
-  ){}
+    private navService: NavService  
+  ){ 
+    //Object.keys(this.compTypeHack).forEach(key => console.log('key: ', key)); 
+  }
 
   ngOnInit() {
     this.navService.show();
@@ -48,21 +74,40 @@ export class EventDetailComponent implements OnInit {
             return Promise.resolve(roboEvent);
           }
       })
-    .subscribe(RoboEvent => this.roboEvent = <RoboEvent>RoboEvent)
+    .subscribe(RoboEvent => {this.roboEvent = <RoboEvent>RoboEvent; this.copyRoboEvent(this.roboEvent);});
     this.setupService.setupNav();
    }
+
+  copyRoboEvent(dbEvent: RoboEvent):void{
+    if(dbEvent.name) this.eventCopy.name = dbEvent.name;
+    if(dbEvent.date) this.eventCopy.date = dbEvent.date;
+    if(dbEvent.competitions) this.eventCopy.competitions = dbEvent.competitions;
+    this.eventCopy.isCurrent = dbEvent.isCurrent;
+    if(dbEvent._id) this.eventCopy._id = dbEvent._id;
+    console.log(JSON.stringify(this.eventCopy));
+  }
 
   goBack(){
     this.location.back();
   }
 
+  btnPlusClicked(){
+    if(JSON.stringify(this.comp) !== JSON.stringify(this.emptyComp)){
+      this.eventCopy.competitions.push({name: this.comp.name, type: this.comp.type});
+    }
+  }
+
+  btnMinusClicked($index: number){
+    this.eventCopy.competitions.splice($index, 1);
+  }
+
   btnSaveClicked(){
-    if(JSON.stringify(this.roboEvent) !== JSON.stringify(this.emptyRoboEvent)){
+    if(JSON.stringify(this.eventCopy) !== JSON.stringify(this.emptyRoboEvent)){
       if(this.newRoboEvent){
-              this.setupService.newEvent(this.roboEvent)
+              this.setupService.newEvent(this.eventCopy)
               .then( resp => {this.goBack();})
           } else {
-              this.setupService.editEvent(this.roboEvent)
+              this.setupService.editEvent(this.eventCopy)
               .then( resp => {this.goBack();})
           }
     } else {
@@ -73,5 +118,11 @@ export class EventDetailComponent implements OnInit {
   btnCancelClicked(){
       this.goBack();
   }
+
+  //this is dodgy
+  changeCompTypeEnumToString(num:number):string{
+    return(this.compTypeEnumKey[num]);
+  }
+
 
 }
