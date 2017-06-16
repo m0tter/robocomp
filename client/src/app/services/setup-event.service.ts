@@ -39,10 +39,15 @@ export class SetupEventService {
     }
 
     editEvent(roboEvent: RoboEvent): Promise<RoboEvent> {
+        console.log(roboEvent);
         return this.http.put(API_EVENT + "/" + roboEvent._id, roboEvent, this.options)
         .toPromise()
         .then(resp => resp.json().data as RoboEvent)
         .catch(err => this.errorHandler(err));
+    }
+
+    changeIsCurrent($index: number){
+        
     }
 
     deleteEvent(roboEvent: RoboEvent): Promise<boolean>{

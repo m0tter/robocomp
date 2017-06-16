@@ -45,7 +45,7 @@ export class EventDetailComponent implements OnInit {
     };
 
   //This is a hack, could cause promblems if extra score types are ever added. Fix later.
-  private compTypeEnumKey: string[] = ["Number", "Time", "Boolean"];
+  private compTypeEnumKey: string[] = ["Score", "Time", "Win/Lose"];
 
   constructor(
     private setupService: SetupEventService,
@@ -102,6 +102,7 @@ export class EventDetailComponent implements OnInit {
   }
 
   btnSaveClicked(){
+    console.log(this.eventCopy);
     if(JSON.stringify(this.eventCopy) !== JSON.stringify(this.emptyRoboEvent)){
       if(this.newRoboEvent){
               this.setupService.newEvent(this.eventCopy)
@@ -119,10 +120,13 @@ export class EventDetailComponent implements OnInit {
       this.goBack();
   }
 
+  changeCurrentEvent(){
+    this.eventCopy.isCurrent = !this.eventCopy.isCurrent;
+    console.log("this.eventCopy.isCurrent: " + this.eventCopy.isCurrent);
+  }
+
   //this is dodgy
   changeCompTypeEnumToString(num:number):string{
     return(this.compTypeEnumKey[num]);
   }
-
-
 }

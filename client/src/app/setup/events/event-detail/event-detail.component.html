@@ -14,6 +14,9 @@
             <div><div class="inputBoxNametag">Date:</div> 
             <input mdInput class="inputBox" type="text" placeholder="Event Date" [(ngModel)]="eventCopy.date" name="date">
             </div>
+            <div><div class="inputBoxNametag">Current Event:</div>
+            <input type="checkbox" [(ngModel)]="eventCopy.isCurrent" (click)="changeCurrentEvent()" name="isCurrent">
+            </div>
         </div>
     </form>
     </div>

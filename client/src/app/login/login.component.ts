@@ -11,7 +11,7 @@ import { User } from 'robocomp';
 })
 export class LoginComponent implements OnInit {
   user: User = { username: '', password: '', email: '', isAdmin: false };
-  loading = false; 
+  loading = false;
   error = '';
 
   constructor(
