@@ -1,14 +1,15 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
 
 import { AppRoutes }  from './app.routes';
 import { SetupRoutes } from './setup/setup.routes';
 
-import { NavService, AuthenticationService, UserService, RobocompService} from './services';
-import { SetupEventService } from './services';
+
+import { NavService, AuthenticationService, UserService, RobocompService, SetupSchoolService } from './services';
+import { SetupService, SetupEventService } from './services';
 import { AuthGuard } from './guards';
 
 import { AppComponent } from './app.component';
@@ -22,6 +23,10 @@ import { SetupComponent } from './setup/setup.component';
 import { SetupEventComponent } from './setup/events/setup-event.component';
 import { SetupSchoolComponent } from './setup/schools/setup-school.component';
 import { EventDetailComponent } from './setup/events/event-detail/event-detail.component';
+import { EditSchoolsComponent } from './setup/schools/edit-schools/edit-schools.component';
+import { NewSchoolComponent } from './setup/schools/new-school/new-school.component';
+import { UsersComponent } from './setup/users/users.component';
+import { UserDialogComponent } from './setup/users/user-dialog.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +39,11 @@ import { EventDetailComponent } from './setup/events/event-detail/event-detail.c
     SetupEventComponent,
     SetupSchoolComponent,
     SideNavComponent,
-    EventDetailComponent
+    EventDetailComponent,
+    EditSchoolsComponent,
+    NewSchoolComponent,
+    UsersComponent,
+    UserDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +51,8 @@ import { EventDetailComponent } from './setup/events/event-detail/event-detail.c
     HttpModule,
     AppRoutes,
     SetupRoutes,
-    MaterialModule.forRoot()
+    MaterialModule.forRoot(),
+    ReactiveFormsModule
   ],
   providers: [
     NavService,
@@ -50,8 +60,15 @@ import { EventDetailComponent } from './setup/events/event-detail/event-detail.c
     UserService,
     AuthGuard,
     RobocompService,
-    SetupEventService
+    SetupEventService,
+    SetupSchoolService,
+    SetupService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [
+    AppComponent  
+  ],
+  entryComponents: [
+    UserDialogComponent
+  ]
 })
 export class AppModule { }

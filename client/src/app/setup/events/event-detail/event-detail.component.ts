@@ -5,9 +5,9 @@ import { Location }               from '@angular/common';
 import 'rxjs/add/operator/switchMap'; 
 import 'rxjs/add/operator/do';
 
-import { SetupEventService } from '../../../services/setup-event.service';
 import { RoboEvent, Competition } from 'robocomp';
 import { COMPTYPES } from '../../../comp-types';
+import { SetupEventService } from '../../../services';
 import { NavService } from '../../../services';
 
 @Component({

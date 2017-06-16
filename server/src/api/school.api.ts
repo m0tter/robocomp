@@ -29,21 +29,21 @@ export class SchoolAPI {
       });
     });
 
-    this.router.use((req, res, next) => {
-      utils.tokenCheck(req, res, next);
-    });
+   // this.router.use((req, res, next) => {
+   //   utils.tokenCheck(req, res, next);
+   // });
 
     this.router.post('/', bparser.json(), (req: Request, res: Response) => {
       var newSchool: SchoolDocument = new SchoolModel;
       var data:School = req.body;
-
-      if( data ) {
+        if( data ) {
         if( data.name )           newSchool.name          = data.name;
         if( data.contactEmail )   newSchool.contactEmail  = data.contactEmail;
         if( data.contactName )    newSchool.contactName   = data.contactName;
         if( data.contactNumber )  newSchool.contactNumber = data.contactNumber;
         if( data.isCurrent )      newSchool.isCurrent     = data.isCurrent;
         if( data.address )        newSchool.address       = data.address;
+        if(data.teams)            newSchool.teams         = data.teams;
         newSchool.save((err, result) => {
           if( err ) this.errorHandler( err, res );
           else {
@@ -57,6 +57,27 @@ export class SchoolAPI {
       SchoolModel.remove( {_id: req.params.id}, err => {
         if( err ) this.errorHandler( err, res );
         else res.status( 200 ).json( {'success': true, 'data': req.params.id} );
+      });
+    });
+
+ this.router.put('/:id', bparser.json(), (req, res) => {
+      SchoolModel.findById(req.params.id, (err, schl) => {
+        if(err) this.errorHandler(err, res);
+        else {
+          let data = req.body as School;
+          if(data.name) schl.name = data.name;
+          if(data.contactEmail) schl.contactEmail = data.contactEmail;
+          if(data.contactName) schl.contactName = data.contactName;
+          if(data.contactNumber) schl.contactNumber = data.contactNumber;
+          if(data.isCurrent) schl.isCurrent = data.isCurrent;
+          if(data.address) schl.address = data.address;
+          if(data.teams) schl.teams = data.teams;
+
+          schl.save((saveErr, result) => {
+            if(saveErr) this.errorHandler(saveErr, res);
+            else res.status(200).json({'success':true, 'data': result});
+          });
+        }
       });
     });
   }

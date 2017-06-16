@@ -1,35 +1,37 @@
 import { Model, Schema, Document, model } from 'mongoose';
 import { UserBase } from 'robocomp';
 import * as Utils from '../utils/utils';
+import { SALT_WORK_FACTOR } from '../config/auth.config';
+import * as bcrypt from 'bcrypt';
 
 let UserSchema = new Schema({
-  username: { type: String, unique: true, required: true },
   password: { type: String, required: true },
-  email: String,
-  isAdmin: Boolean
+  email: { type: String, unique: true, required: true },
+  isAdmin: Boolean,
+  canEdit: Boolean
 });
 
-UserSchema.statics = {
-  saveUser: (requestData: any, callback: Function) => {
-    this.create(requestData, callback);
-  },
+UserSchema.pre('save', function(next) {
+  let user = this;
+  if(!this.isModified('password')) return next();
 
-  updateUser: (user: UserDocument, callback: Function) => {
-    user.update(callback);
-  },
+  bcrypt.genSalt(SALT_WORK_FACTOR, (err, salt) => {
+    if(err) return next(err);
+    bcrypt.hash(user.password, salt, (err, hash) => {
+      if(err) return next(err);
+      user.password = hash;
+      next();
+    });
+  });
+});
 
-  decryptPassword: (password: string, callback: Function): string =>{
-    let decrypted = Utils.decrypt(password);
-    if(callback) callback(decrypted);
-    return decrypted;
-  },
-
-  encryptPassword: (password: string, callback: Function): string => {
-    let encrypted = Utils.encrypt(password);
-    if(callback) callback(encrypted);
-    return encrypted;
-  }
+UserSchema.methods.comparePassword = function (passwordToCheck:string, cb:Function) {
+  bcrypt.compare(passwordToCheck, this.password, (err, isMatch) => {
+    if(err) return cb(err);
+    cb(isMatch);
+  });
 }
 
-export interface UserDocument extends UserBase, Document { }
+interface ComparePasswordCallback { (isMatch: boolean):void }
+export interface UserDocument extends UserBase, Document { comparePassword(password: string, callback: ComparePasswordCallback): void }
 export var UserModel = model<UserDocument>('Users', UserSchema);

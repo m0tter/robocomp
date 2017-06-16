@@ -1,0 +1,47 @@
+@import "../../_palette.scss";
+
+.container {
+  padding: 20px;
+}
+
+.actionButton {
+  color: white;
+  background-color: $rc_orange400;
+}
+
+.newButton {
+  color: white;
+  background-color: $rc_orange400;
+}
+.mat-button[disabled] {
+  background-color: $rc_orange200;
+}
+
+.actionButtons {
+  display: inline-block;
+  padding-left: 25px;
+}
+.list-container {
+  margin-top: 20px;
+}
+.users-grid {
+  display: table;
+  border: 1px solid $rc-lightgrey;
+}
+.header {
+  border-bottom: 1px solid $rc-lightgrey;
+  display: table-row;
+  background-color: $rc_darkwhite;
+  font-weight: bold;
+}
+.row {
+  display: table-row;
+}
+[class^="user-"] {
+  display: table-cell;
+  padding: 10px;
+}
+.user-selected { width: 30px; }
+.user-email { width: 300px; }
+.user-isadmin { width: 60px; }
+.user-canedit { width: 40px; }

@@ -1,9 +1,9 @@
 <div class="whole-setup-school">
     <div class="container">
         <div class="school-setup-buttons">
-            <a md-button routerLink="." routerLinkActive="routeactive">NEW SCHOOL</a>
-            <a md-button routerLink="." routerLinkActive="routeactive">EDIT SCHOOL</a>
-            <a md-button routerLink="." routerLinkActive="routeactive">DELETE SCHOOL</a>
+            <a md-button (click)="btnNew_Clicked()">NEW SCHOOL</a>
+            <a md-button (click)="btnEdit_Clicked()">EDIT SCHOOL</a>
+            <a md-button (click)="btnDelete_Clicked()">DELETE SCHOOL</a>
         </div>
         <div class="school-table">
             <div class="header">

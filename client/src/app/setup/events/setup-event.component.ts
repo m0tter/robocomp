@@ -98,5 +98,4 @@ export class SetupEventComponent implements OnInit {
   }
 
   errorHandler(err : any) { console.log("An error has occured in SetupEventComponent:" + err)}
-
 }
