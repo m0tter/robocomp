@@ -27,6 +27,7 @@ import { EditSchoolsComponent } from './setup/schools/edit-schools/edit-schools.
 import { NewSchoolComponent } from './setup/schools/new-school/new-school.component';
 import { UsersComponent } from './setup/users/users.component';
 import { UserDialogComponent } from './setup/users/user-dialog.component';
+import { DrawsComponent } from './setup/draws/draws.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { UserDialogComponent } from './setup/users/user-dialog.component';
     EditSchoolsComponent,
     NewSchoolComponent,
     UsersComponent,
-    UserDialogComponent
+    UserDialogComponent,
+    DrawsComponent
   ],
   imports: [
     BrowserModule,

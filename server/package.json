@@ -9,7 +9,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "bcrypt": "1.0.2",
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "1.17.0",
     "cors": "2.8.1",
     "express": "4.15.1",
@@ -19,7 +19,7 @@
     "morgan": "1.8.1"
   },
   "devDependencies": {
-    "@types/bcrypt": "1.0.0",
+    "@types/bcrypt-nodejs": "0.0.30",
     "@types/body-parser": "0.0.34",
     "@types/cors": "2.8.1",
     "@types/express": "4.0.35",

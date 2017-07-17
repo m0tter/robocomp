@@ -45,7 +45,7 @@ export class EventDetailComponent implements OnInit {
     };
 
   //This is a hack, could cause promblems if extra score types are ever added. Fix later.
-  private compTypeEnumKey: string[] = ["Score", "Time", "Win/Lose"];
+  private compTypeEnumKey: string[] = ["Sumo", "Rescue", "Dance"];
 
   constructor(
     private setupService: SetupEventService,
