@@ -22,8 +22,14 @@ export class UserDialogComponent implements OnInit {
   save() {
     this._saving = true;
     if(this.userForm.dirty && this.userForm.valid) {
-      this._newUser = this.userForm.value;
-      this.dialogRef.close(this._newUser);
+      if(!this._newUser) {
+        let id = this.user._id;
+        this.user = this.userForm.value;
+        this.user._id = id;
+      } else {
+        this.user = this.userForm.value;
+      }
+      this.dialogRef.close(this.user);
     }
   }
 
@@ -36,8 +42,8 @@ export class UserDialogComponent implements OnInit {
     this.userForm = this.formBuilder.group({
       email: [this.user.email, Validators.required],
       password: '',
-      isAdmin: '',
-      canEdit: ''
+      isAdmin: [this.user.isAdmin],
+      canEdit: [this.user.canEdit]
     });
   }
 

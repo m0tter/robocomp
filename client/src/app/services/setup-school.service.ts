@@ -3,7 +3,7 @@ import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { AuthenticationService } from './authentication.service';
 import "rxjs/add/operator/map";
 import 'rxjs/add/operator/toPromise';
-import { School } from 'robocomp';
+import { School, Team } from 'robocomp';
 import { API_SCHOOL } from '../_api.paths';
 
 @Injectable ()
@@ -46,6 +46,15 @@ deleteSchool(school: School): Promise<boolean>{
     .toPromise()
     .then( resp => {
         if(resp.json().data === school._id) return true; else return false;
+    })
+    .catch(err => this.errorHandler(err));
+}
+
+deleteTeam(Team: Team): Promise<boolean>{
+    return this.http.delete(API_SCHOOL + "/" + Team._id, this.options)
+    .toPromise()
+    .then( resp => {
+        if(resp.json().data === Team._id) return true; else return false;
     })
     .catch(err => this.errorHandler(err));
 }

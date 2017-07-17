@@ -22,7 +22,7 @@ export class UsersAPI {
     });
     
     this.router.get('/', (req, res) => {
-      UserModel.find((err, users) => {
+      UserModel.find().populate('-password').exec((err, users) => {
         if(err) this.errorHandler(err, res);
         else {
           res.status(200).json({'success': true, data: users});
@@ -72,7 +72,7 @@ export class UsersAPI {
             if(user) {
               if(data.email) user.email = data.email;
               if(data.password) user.password = data.password;
-              user.isAdmin = data.password && true;
+              user.isAdmin = data.isAdmin && true;
               user.canEdit = data.canEdit && true;
 
               user.save((err, result) => {
@@ -81,6 +81,14 @@ export class UsersAPI {
               });
             } else this.errorHandler('no user record matches the supplied data.', res); 
           }
+        });
+      }
+    });
+
+    this.router.delete('/:id', (req, res) => {
+      if(req.params.id) {
+        UserModel.findByIdAndRemove(req.params.id, err => {
+          if(err) this.errorHandler(err, res); else res.status(200).json({'success': true});
         });
       }
     });

@@ -14,7 +14,7 @@ export interface School extends SchoolBase {
 
 export interface TeamBase {
   name: string;
-  memberCount: number;
+  members: string[];
   isCurrent: boolean;
 }
 
