@@ -1,6 +1,6 @@
 <div *ngIf="visible" class="sidenav">
   <div class="nav-link-wrapper" *ngFor="let i of navItems"> 
     <div class="nav-divider" *ngIf="i.isDivider"></div>
-    <div class="nav-link"><a *ngIf="!i.isDivider || undefined" routerLink="{{i.route}}" routerLinkActive="routeactive">{{ i.name }}</a></div>
+    <div class="nav-link"><a *ngIf="!i.isDivider || undefined" class="linkbutton" routerLink="{{i.route}}" routerLinkActive="routeactive">{{ i.name }}</a></div>
   </div>
 </div>

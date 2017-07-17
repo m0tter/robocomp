@@ -32,13 +32,14 @@ export class UserService {
   }
 
   editUser(user: User): Promise<User> {
+    console.log('editUser ID: ', user._id);
     return this.http.put(API_USER + '/' + user._id, user, this.options)
       .toPromise()
       .then(res => {
         let json = res.json();
         if(json.success) return Promise.resolve(<User>json.data);
         else {
-          this.errorHandler('error updating user: ' + json.data);
+          this.errorHandler('error updating user: ' + JSON.stringify(json.data));
           return Promise.reject('error updating user, please check server logs.');
         }
        })
@@ -59,17 +60,24 @@ export class UserService {
       .catch(err => this.errorHandler(err));
   }
 
-  myGetUser(): Promise<User[]> {
-    return this.http.get(API_USER, this.options)
+  deleteUser(user: User): Promise<Boolean> {
+    return this.http.delete(API_USER + '/' + user._id, this.options)
       .toPromise()
-      .then( resp => { return resp.json().data as User[]})
-      .catch( err => { return this.errorHandler(err)});
+      .then(res => {
+        let json = res.json();
+        if(json.success) {
+          return Promise.resolve(true);
+        } else {
+          return this.errorHandler(json.data);
+        }
+      })
+      .catch(err => { return this.errorHandler(err); })
   }
 
   private errorHandler(error: any): Promise<any> {
-    console.error('An error occurred in user.service', error.message || error);
+    console.error('An error occurred in user.service', error.message || JSON.stringify(error));
     if(error.status === 401) this.authService.timeout();
 
-    return Promise.reject("it's broken :(");
+    return Promise.reject("An error occurred in user.service, please check the logs");
   }
 }

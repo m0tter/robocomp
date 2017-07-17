@@ -45,21 +45,36 @@ export class UsersComponent implements OnInit, OnDestroy {
   }
   
   editUser() {
-    // let user = this._users.find(e => e.selected);
-    // let dialogRef = this.dialog.open(UserDialogComponent);
-    // dialogRef.componentInstance.editUser({...user});
+    let user = this._users.find(e => e.selected);
+    if(user) {
+      let dialogRef = this.dialog.open(UserDialogComponent);
+      let copy = this.copyUser(user);
+      dialogRef.componentInstance.editUser(this.copyUser(user));
+   
+      this._subs.add(dialogRef.afterClosed().subscribe(result => {
+        if(result) {
+          this.userService.editUser(result)
+            .then(() => {
+              result.selected = false;
+              this._users.splice( this._users.indexOf(user), 1, result);
+              this.checkButtons();
+            })
+            .catch( err => this.errorHandler(err) );
+        }
+      }));
+    }
+  }
 
-    // this._subs.add(dialogRef.afterClosed().subscribe(result => {
-    //   if(result) {
-    //     this.userService.editUser(result)
-    //       .then(() => {
-    //         result.selected = false;
-    //         this._users.splice( this._users.indexOf(user), 1, result);
-    //         this.checkButtons();
-    //       })
-    //       .catch( err => this.errorHandler(err) );
-    //   }
-    // }));
+  copyUser(user: User): User {
+    //let newUser:User = {canEdit: false, email: '', isAdmin: false, password: '', username: '', _id: ''};
+    return <User>JSON.parse(JSON.stringify(user));
+    // if(user._id) newUser._id = user._id;
+    // if(user.canEdit !== undefined) newUser.canEdit = user.canEdit;
+    // if(user.isAdmin !== undefined) newUser.isAdmin = user.isAdmin;
+    // if(user.email) newUser.email = user.email;
+    // if(user.password) newUser.password = user.password;
+    // if(user.username) newUser.username = user.username;
+    // return newUser;
   }
 
   checkButtons() {
@@ -71,12 +86,28 @@ export class UsersComponent implements OnInit, OnDestroy {
     if(counter > 0 ) this._deleteDisabled = false; else this._deleteDisabled = true;
   }
 
+  deleteSelected() {
+    for(let u of this._users){
+      if(u.selected) {
+        this.userService.deleteUser(u)
+          .then(res => {
+            if(res) this._users.splice(this._users.indexOf(u), 1);
+          })
+          .catch(err => this.errorHandler(err));
+      }
+    }
+  }
+
   btnEdit_Clicked() {
     this.editUser();
   }
 
   btnNew_Clicked() {
     this.newUser();
+  }
+
+  btnDelete_Clicked() {
+    this.deleteSelected();
   }
 
   ngOnInit() {
