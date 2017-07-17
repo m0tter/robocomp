@@ -29,11 +29,26 @@
 
 .compInput-table{
   padding: 5px;
-  border: 1px solid #42a5f5;
+  border: 2px solid #42a5f5;
   display: table;
+  width: 500px;
+}
+.compInput-header{
+  display: table-row;
+  background-color: $rc-darkwhite;
+  border: 2px solid $rc-navyblue; 
 }
 
-[class^="compInput-"] {
-    display: table-row-group;
-    padding: 8px;
+.inputBoxNametag{
+  width: 50px;
+  display: inline-block;  
 }
+
+[class^="comp-"] {
+    display: table-cell;
+    padding: 10px;
+}
+
+.comp-saveDel{width: 30px;}
+.comp-name{width: 160px;}
+.comp-scoreType{width: 170px;}

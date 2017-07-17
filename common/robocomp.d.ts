@@ -48,9 +48,9 @@ export interface CompBase {
 }
 
 export enum CompetitionType {
-  number = 1,
-  time = 2,
-  boolean = 3
+  sumo,
+  rescue,
+  dance
 }
 
 export interface Competition {

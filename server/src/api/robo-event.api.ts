@@ -60,22 +60,28 @@ export class RoboEventAPI {
     });
 
     this.router.put('/:id', bparser.json(), (req, res) => {
-      RoboEventModel.findById(req.params.id, (err, evnt) => {
+      let event = <RoboEvent>req.body;
+      if(event.isCurrent) {
+        RoboEventModel.findOneAndUpdate({'isCurrent': true}, {$set: {'isCurrent':false}}, (err, doc) => {
+          if(err) this.errorHandler(err, res);
+        });
+      }
+      RoboEventModel.findById(req.params.id, (err, docEvent) => {
         if(err) this.errorHandler(err, res);
-          else{
-            let data = req.body as RoboEvent;
-            if(data.name) evnt.name = data.name;
-            if(data.date) evnt.date = data.date;
-            if(data.isCurrent) evnt.isCurrent = data.isCurrent;
+        else {
+          console.log(event);
+          if(event.name) docEvent.name = event.name;
+          if(event.date) docEvent.date = event.date;
+          if(event.competitions) docEvent.competitions = event.competitions;
+          if(event.isCurrent) docEvent.isCurrent = event.isCurrent;
 
-            evnt.save((saveErr, result) => {
-              if(saveErr) this.errorHandler(saveErr, res);
-              else res.status(200).json({'success': true, 'data': result});
-            });
-          }
-        })
-    })
-
+          docEvent.save((saveErr, result) => {
+            if(saveErr) this.errorHandler(saveErr, res);
+            else res.status(200).json({'success': true, 'data': result});
+          });
+        }
+      });
+    });
   }
 
   private errorHandler( err: any, res?: Response ) {

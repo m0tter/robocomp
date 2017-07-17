@@ -66,6 +66,14 @@ export class SetupEventComponent implements OnInit {
         this.roboEvents[$index].selected = !this.roboEvents[$index].selected;
         this.checkButtons();  
     }
+  
+  eventCurrent_Clicked($index: number){
+    for(let x = 0; x < this.roboEvents.length; x++){
+      if (x == $index) this.roboEvents[$index].isCurrent = true;
+      else this.roboEvents[x].isCurrent = false;
+    }
+    this.setupService.changeIsCurrent($index);
+  }
 
   deleteEvents(roboEvent: roboEvent, cb?: Function): void{
         console.log('deleteSchool' + JSON.stringify(roboEvent));

@@ -7,8 +7,9 @@ import { MaterialModule } from '@angular/material';
 import { AppRoutes }  from './app.routes';
 import { SetupRoutes } from './setup/setup.routes';
 
+
 import { NavService, AuthenticationService, UserService, RobocompService, SetupSchoolService } from './services';
-import { SetupService } from './services';
+import { SetupService, SetupEventService } from './services';
 import { AuthGuard } from './guards';
 
 import { AppComponent } from './app.component';
@@ -26,6 +27,7 @@ import { EditSchoolsComponent } from './setup/schools/edit-schools/edit-schools.
 import { NewSchoolComponent } from './setup/schools/new-school/new-school.component';
 import { UsersComponent } from './setup/users/users.component';
 import { UserDialogComponent } from './setup/users/user-dialog.component';
+import { DrawsComponent } from './setup/draws/draws.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,8 @@ import { UserDialogComponent } from './setup/users/user-dialog.component';
     EditSchoolsComponent,
     NewSchoolComponent,
     UsersComponent,
-    UserDialogComponent
+    UserDialogComponent,
+    DrawsComponent
   ],
   imports: [
     BrowserModule,
@@ -59,6 +62,7 @@ import { UserDialogComponent } from './setup/users/user-dialog.component';
     UserService,
     AuthGuard,
     RobocompService,
+    SetupEventService,
     SetupSchoolService,
     SetupService
   ],
