@@ -9,6 +9,11 @@
     color: #fff;  
 }
 
+.action-buttons {
+    color: #fff;
+    background-color: $rc_navyblue;
+}
+
 .school-table {
     padding: 5px;
     display: table;
@@ -34,3 +39,4 @@
 .setup-email {width: 200px; }
 .setup-address {width: 200px; }
 .school-teams {width: 120px; }
+.teamname:last-child > .comma { display: none;}

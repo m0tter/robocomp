@@ -44,8 +44,12 @@ if (this.newSchool){
 }
 
 addTeam_Clicked(): void {
-  let newteam: Team = {name: '', isCurrent: true, memberCount: 0}
+  let newteam: Team = {name: '', isCurrent: true, members: []};
   this.school.teams.push(newteam);
+}
+
+deleteTeam_Clicked($index, number){
+this.school.teams.splice($index, 1);
 }
 
   ngOnInit():void {
@@ -53,7 +57,10 @@ addTeam_Clicked(): void {
     .switchMap((params: Params) => {
       if(params['id'] !== '0') {
         this.newSchool = false;
-        return this.setupSchoolService.getSchoolById(params['id'])
+        let school = this.setupSchoolService.getSchoolById(params['id'])
+        console.log('edit-schools:ngOnInit:schoolId=' + params['id']);
+        console.log('edit-schools:ngOnInit:school=' + JSON.stringify(school));
+        return school;
       } else{
         let school: School = {
           name: '', 
