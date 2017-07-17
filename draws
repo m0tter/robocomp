@@ -1,0 +1,80 @@
+interface Draw {
+  _id: string;
+  order: number;
+  eventId: string;
+  competitionId: string;
+  draw: {
+    order: number;
+    competitorId: string[]
+  }[]
+}
+
+interface Result {
+  teamId: string;
+  drawId: string;
+  score: any;
+}
+
+class Test {
+  private _sumoDraws:Draw[];
+  private _rescueDraw:Draw;
+
+  constructor() {
+    this._sumoDraws = [
+      { 
+        _id: 'dra123abc',
+        eventId: 'eve123abc',
+        competitionId: 'com123abc',
+        order: 1,
+        draw: [
+          {
+            order: 1,
+            competitorId: ['abc123','abc456']
+          },
+          {
+            order: 2,
+            competitorId: ['abc789', 'def123']
+          }
+        ]
+      },
+      {
+        _id: 'dra456def',
+        eventId: 'eve123abc',
+        competitionId: 'com123abc',
+        order: 2,
+        draw: [
+          {
+            order: 1,
+            competitorId: ['def123', 'abc123']
+          },
+          {
+            order: 2,
+            competitorId: ['abc456', 'abc789']
+          }
+        ]
+      }
+    ];
+
+    this._rescueDraw = {
+      _id: 'dra456def',
+      eventId: 'eve456abc',
+      competitionId: 'com456def',
+      order: 1,
+      draw: [
+        {
+          order: 1,
+          competitorId: ['dfg890']
+        },
+        {
+          order: 2,
+          competitorId: ['uio295']
+        },
+        {
+          order: 3,
+          competitorId: ['abc123']
+        }
+      ]
+    };
+
+  }
+}
