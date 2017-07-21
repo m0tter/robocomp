@@ -4,9 +4,9 @@ import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise'
 
-import { AuthenticationService } from './authentication.service';
+import { AuthenticationService } from '../../services/authentication.service';
 import { User } from 'robocomp';
-import { API_USER } from '../_api.paths';
+import { API_USER } from '../../_api.paths';
 
 @Injectable()
 export class UserService {

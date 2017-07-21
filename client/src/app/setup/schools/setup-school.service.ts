@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
-import { AuthenticationService } from './authentication.service';
+import { AuthenticationService } from '../../services/authentication.service';
 import "rxjs/add/operator/map";
 import 'rxjs/add/operator/toPromise';
 import { School, Team } from 'robocomp';
-import { API_SCHOOL } from '../_api.paths';
+import { API_SCHOOL } from '../../_api.paths';
 
 @Injectable ()
 export class SetupSchoolService {

@@ -5,10 +5,10 @@ import { Observable } from 'rxjs';
 import "rxjs/add/operator/map";
 import 'rxjs/add/operator/toPromise'
 
-import { AuthenticationService } from './authentication.service';
+import { AuthenticationService } from '../../services/authentication.service';
 import { RoboEvent } from 'robocomp';
-import { API_EVENT } from '../_api.paths';
-import { NavService } from './';
+import { API_EVENT } from '../../_api.paths';
+import { NavService } from '../../services';
 
 
 @Injectable()

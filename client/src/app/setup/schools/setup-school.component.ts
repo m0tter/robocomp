@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { SetupSchoolService } from '../../services';
+import { SetupSchoolService } from './setup-school.service';
 import { School } from 'robocomp'
 
 interface school extends School {

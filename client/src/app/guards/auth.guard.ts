@@ -8,8 +8,10 @@ export class AuthGuard implements CanActivate {
 
   canActivate() {
     if( localStorage.getItem( 'roboUser' )) {
+      console.log('authguard:returning true');
       return true;
     }
+    console.log('authguard:returning false');
     this.router.navigate(['/login']);
     return false;
   }
