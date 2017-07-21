@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MdButtonModule, MdInputModule, MdSelectModule } from '@angular/material';
+import { MdButtonModule, MdInputModule, MdSelectModule, MdCheckboxModule, MdChipsModule } from '@angular/material';
 
 import { UsersComponent } from './users.component';
 import { UserDialogComponent } from './user-dialog.component';
@@ -15,6 +15,8 @@ import { UserService } from './user.service'
     MdButtonModule,
     MdInputModule,
     MdSelectModule,
+    MdCheckboxModule,
+    MdChipsModule,
     UsersRoutingModule
   ],
   declarations: [

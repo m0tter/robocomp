@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MdDialog, MdDialogRef } from '@angular/material';
 import { User } from 'robocomp';
-import { UserService } from '../../services';
+import { UserService } from './user.service';
 import { SetupService } from '../setup.service';
 import { UserDialogComponent } from './user-dialog.component';
 import { Subscription } from 'rxjs/Subscription';
