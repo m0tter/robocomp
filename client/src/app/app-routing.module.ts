@@ -15,6 +15,7 @@ export const routes: Routes = [
   { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },
   { path: 'login', loadChildren: './login/login.module#LoginModule' },
   { path: 'setup', canActivate: [AuthGuard], runGuardsAndResolvers: 'always', loadChildren: './setup/setup.module#SetupModule' },
+  { path: 'results-entry', canActivate: [AuthGuard], runGuardsAndResolvers: 'always', loadChildren: './results-entry/results-entry.module#ResultsEntryModule'}
   //{ path: 'not-found', loadChildren: './not-found/not-found.module#NotFoundModule' },
   //{ path: '**', redirectTo: 'not-found' }
 ]
