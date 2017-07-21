@@ -7,7 +7,7 @@ import 'rxjs/add/operator/do';
 
 import { RoboEvent, Competition } from 'robocomp';
 import { COMPTYPES } from '../../../comp-types';
-import { SetupEventService } from '../../../services';
+import { SetupEventService } from '../setup-event.service';
 import { NavService } from '../../../services';
 
 @Component({

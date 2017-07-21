@@ -6,7 +6,7 @@ import { School, Team } from 'robocomp';
 
 import 'rxjs/add/operator/switchMap';
 
-import { SetupSchoolService } from '../../../services/setup-school.service';
+import { SetupSchoolService } from '../setup-school.service';
 
 @Component({
   selector: 'app-edit-schools',

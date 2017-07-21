@@ -15,7 +15,7 @@ export class DashboardComponent implements OnInit {
 
   constructor (
     private navService: NavService,
-    private roboService: RobocompService 
+    // private roboService: RobocompService 
   ) { }
 
   myButton(): void {

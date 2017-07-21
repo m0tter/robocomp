@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { SetupService } from '../services';
+import { SetupService } from './setup.service';
 
 @Component({
   selector: 'app-setup',
@@ -13,11 +13,9 @@ export class SetupComponent implements OnInit {
     this.setupService.setupNav();
    }
 
-  buildSideNav(): void {
-   
-  }
+
 
   ngOnInit() {
-    this.buildSideNav();
+    
   }
 }

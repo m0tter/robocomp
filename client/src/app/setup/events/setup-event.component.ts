@@ -4,7 +4,7 @@ import { ActivatedRoute, Params }   from '@angular/router';
 import { Location }                 from '@angular/common';
 import { RoboEvent }                from 'robocomp';
 import { Router }                   from '@angular/router';
-import { SetupEventService }             from '../../services/setup-event.service';
+import { SetupEventService }             from './setup-event.service';
 import 'rxjs/add/operator/switchMap';
 
 interface roboEvent extends RoboEvent {
