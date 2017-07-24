@@ -22,7 +22,7 @@ export class UsersComponent implements OnInit, OnDestroy {
 
   constructor (
     private userService: UserService,
-    private setupService: SetupService,
+    // private setupService: SetupService,
     private dialog: MdDialog ) 
   { 
     this._users = [{canEdit: false, email: '', isAdmin: false, password: '', username: ''}];
@@ -111,7 +111,7 @@ export class UsersComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.setupService.setupNav();
+    //this.setupService.setupNav();
     this.userService.getUsers()
       .then(res => this._users = res)
       .catch(err => this.errorHandler(err));
