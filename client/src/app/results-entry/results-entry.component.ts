@@ -29,17 +29,17 @@ private currentEvent: RoboEvent;
         name: 'Rescue',
         route: '/' 
       },
-        { name: '', route: '', isDivider: true},
+        //{ name: '', route: '', isDivider: true},
       {
         name: 'Dance',
         route: '/'
       },
-        { name: '', route: '', isDivider: true},
+        //{ name: '', route: '', isDivider: true},
       {
         name: 'Maze',
         route: '/'
       },
-        { name: '', route: '', isDivider: true},
+        //{ name: '', route: '', isDivider: true},
       {
         name: 'Sumo',
         route: '/'

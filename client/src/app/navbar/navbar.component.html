@@ -6,6 +6,7 @@
   <a md-button routerLink="setup" routerLinkActive="routeactive">SETUP</a>
   </div>
   <span class="fill-remaining-space"></span>
+  <span class="currentEvent"> CURRENT EVENT : <span class="eventName">{{currentEventName}}</span></span>
   <a md-button routerLink="login" routerLinkActive="routeactive">
     <span *ngIf="isLoggedIn()">LOGOUT</span>
     <span *ngIf="!isLoggedIn()">LOGIN</span>

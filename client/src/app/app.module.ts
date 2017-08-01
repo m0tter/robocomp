@@ -11,7 +11,7 @@ import { SideNavComponent } from './side-nav/side-nav.component';
 import { AppRoutingModule } from './app-routing.module';
 import { UserDialogComponent } from './setup/users/user-dialog.component';
 
-import { AuthenticationService, NavService } from './services';
+import { AuthenticationService, NavService, RobocompService } from './services';
 import { AuthGuard } from './guards';
 
 @NgModule({
@@ -34,6 +34,7 @@ import { AuthGuard } from './guards';
   ],
   providers: [ 
     AuthenticationService,
+    RobocompService,
     NavService,
     AuthGuard
   ],

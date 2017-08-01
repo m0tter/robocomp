@@ -28,12 +28,12 @@
             <div class="comp-scoreType">Competion Score Type</div>
         </div>
         <div class="compInput-savedContent" *ngFor="let comp of eventCopy.competitions; let i = index;">
-            <div class="comp-saveDel"><button (click)="btnMinusClicked(i)">-</button></div>
+            <div class="comp-saveDel"><button (click)="btnMinusClicked(i)">DELETE</button></div>
             <div class="comp-name">{{comp.name}}</div>
             <div class="comp-scoreType">{{changeCompTypeEnumToString(comp.type)}}</div>
         </div>
         <div class="compInput-newComp">
-            <div class="comp-saveDel"><button class="btn-save" (click)="btnPlusClicked()">+</button></div>
+            <div class="comp-saveDel"><button class="btn-save" (click)="btnPlusClicked()">ADD</button></div>
             <div class="comp-name"><input type="text" placeholder="Name" [(ngModel)]="comp.name" name="compName"></div>
             <div class="comp-scoreType">
                 <select class="dropdown"  id="myList" placeholder="Score Type" [(ngModel)]="comp.type" name="compType">

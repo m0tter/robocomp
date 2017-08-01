@@ -26,6 +26,17 @@ export class RoboEventAPI {
       });
     });
 
+    this.router.get('/current', (req, res) => {
+      RoboEventModel.findOne({isCurrent: true}, (err, event) => {
+        if( err ) this.errorHandler( err, res );
+        if (event){
+          res.status(200).json({'success': true, 'data': event});
+        } else {
+          res.status(204).json({'success': false, 'data': 'no current event found' });
+        }
+      });
+    });
+
     this.router.delete('/:id', (req, res) => {
       RoboEventModel.findOne( {_id: req.params.id}, (err, evnt) => {
         if( err ) this.errorHandler( err, res );

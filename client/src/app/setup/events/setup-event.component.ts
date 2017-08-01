@@ -33,7 +33,6 @@ export class SetupEventComponent implements OnInit {
     this.setupService.getEvents()
       .then(res => this.roboEvents = res as roboEvent[])
       .catch(err => this.errorHandler(err));
-    this.setupService.setupNav();
 }
 
   btnNewClicked(){
@@ -79,7 +78,7 @@ export class SetupEventComponent implements OnInit {
         console.log('deleteSchool' + JSON.stringify(roboEvent));
           this.setupService.deleteEvent(roboEvent)
             .then(res => {if(res)this.roboEvents.splice( this.roboEvents.indexOf(roboEvent), 1); if(cb) cb();})
-           .catch(err => this.errorHandler(err));
+            .catch(err => this.errorHandler(err));
     }
 
   checkButtons(){

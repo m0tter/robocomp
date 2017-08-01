@@ -8,7 +8,8 @@ import 'rxjs/add/operator/toPromise'
 import { AuthenticationService } from '../../services/authentication.service';
 import { RoboEvent } from 'robocomp';
 import { API_EVENT } from '../../_api.paths';
-import { NavService } from '../../services';
+import { NavService, RobocompService } from '../../services';
+import { SetupService } from '../setup.service';
 
 
 @Injectable()
@@ -16,8 +17,15 @@ export class SetupEventService {
     private setupNavComplete = false;
     private options: RequestOptions;
 
-    constructor(private http: Http, private authService: AuthenticationService, private navService: NavService)
-    {this.options = this.authService.httpOptions();}
+    constructor(private http: Http,
+                private authService: AuthenticationService,
+                private navService: NavService, 
+                private setupService: SetupService,
+                private robocompService: RobocompService
+                ){
+                    this.options = this.authService.httpOptions(); 
+                    this.setupService.setupNav();
+                }
 
     getEvents(): Promise<RoboEvent[]> {
         return this.http.get(API_EVENT, this.options)
@@ -34,7 +42,10 @@ export class SetupEventService {
     newEvent(roboEvent: RoboEvent): Promise<RoboEvent> {
         return this.http.post(API_EVENT, roboEvent, this.options)
         .toPromise()
-        .then(resp => resp.json().data as RoboEvent)
+        .then(resp => {
+            this.robocompService.getCurrentEvent();
+            return resp.json().data as RoboEvent;
+             })
         .catch(err => this.errorHandler(err));
     }
 
@@ -42,7 +53,10 @@ export class SetupEventService {
         console.log(roboEvent);
         return this.http.put(API_EVENT + "/" + roboEvent._id, roboEvent, this.options)
         .toPromise()
-        .then(resp => resp.json().data as RoboEvent)
+        .then(resp => {
+            this.robocompService.getCurrentEvent();
+            return resp.json().data as RoboEvent;
+        })
         .catch(err => this.errorHandler(err));
     }
 
@@ -57,23 +71,6 @@ export class SetupEventService {
             if(resp.json().data === roboEvent._id) return true; else return false;
         })
         .catch(err => this.errorHandler(err));
-    }
-
-    setupNav(): void{
-        if(!this.setupNavComplete){
-            this.navService.show();
-            this.navService.setNavItems([
-            {
-                name: 'Events',
-                route: 'setup/events'
-            },
-            {
-                name: 'Schools',
-                route: 'setup/schools'
-            }
-            ]);
-            this.setupNavComplete = true;
-        }
     }
 
     errorHandler(err: any): Promise<any>{

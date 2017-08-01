@@ -47,6 +47,10 @@ export class SetupService {
                 route: 'setup/schools'
             },
             {
+                name: 'Draws',
+                route: 'setup/draws'
+            },
+            {
                 name: 'Users',
                 route: 'setup/users'
             }

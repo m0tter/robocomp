@@ -1,3 +1,5 @@
+@import "../_palette";
+
 .icon {
   width: 32px;
   height: 32px;
@@ -6,4 +8,18 @@
 
 .button-spacing{
   padding-right: 4px;
+}
+
+.currentEvent{
+  line-height: 38px;
+  padding-right:150px;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  //color: $rc-lightblue;
+}
+
+.eventName{
+  //text-decoration: underline;
+  font-weight: bold;
 }

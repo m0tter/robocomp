@@ -75,7 +75,6 @@ export class EventDetailComponent implements OnInit {
           }
       })
     .subscribe(RoboEvent => {this.roboEvent = <RoboEvent>RoboEvent; this.copyRoboEvent(this.roboEvent);});
-    this.setupService.setupNav();
    }
 
   copyRoboEvent(dbEvent: RoboEvent):void{
