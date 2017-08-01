@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
+import { SetupService } from '../setup.service';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise'
@@ -14,8 +15,12 @@ export class UserService {
 
   constructor (
     private http: Http,
-    private authService: AuthenticationService
-  ) { this.options = this.authService.httpOptions(); }
+    private authService: AuthenticationService,
+    private setupService: SetupService
+  ) { 
+    this.options = this.authService.httpOptions(); 
+    this.setupService.setupNav();
+  }
 
   getUsers(): Promise<User[]> {
     return this.http.get(API_USER, this.options)

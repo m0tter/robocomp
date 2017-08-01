@@ -19,20 +19,7 @@ export class SetupService {
         private authService: AuthenticationService,
         private navService: NavService ) 
     {
-        this.options = this.authService.httpOptions();
         if(!this._isNavSetup) this.setupNav();
-    }
-
-    getEvents(): Promise<RoboEvent[]> {
-        return this.http.get(API_EVENT, this.options)
-            .toPromise()
-            .then((response: Response) => response.json() as RoboEvent[])
-            .catch(err => {return this.errorHandler(err)});
-    }
-
-    getEventById(id: string): Promise<RoboEvent> {
-        return this.getEvents()
-        .then(events => events.find(event => event._id === id));
     }
 
     setupNav() {
