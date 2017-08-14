@@ -4,7 +4,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { ResultsEntryComponent } from './results-entry.component';
 
 const routes: Routes = [
-  { path: '', component: ResultsEntryComponent }
+  { path: '', component: ResultsEntryComponent },
+  
 ]
 
 @NgModule({

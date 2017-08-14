@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { AuthenticationService } from '../../services/authentication.service';
+import { SetupService } from '../setup.service';
 import "rxjs/add/operator/map";
 import 'rxjs/add/operator/toPromise';
 import { School, Team } from 'robocomp';
@@ -11,8 +12,9 @@ export class SetupSchoolService {
     private options: RequestOptions;
     private School = '/src/api';
 
-    constructor(private http: Http, private authService: AuthenticationService)
-    {this.options = this.authService.httpOptions();}
+    constructor(private http: Http, private authService: AuthenticationService, private setupService: SetupService, )
+    {this.options = this.authService.httpOptions();
+     this.setupService.setupNav();}
 
 getSchool(): Promise<School[]>{
     return this.http.get(API_SCHOOL, this.options)

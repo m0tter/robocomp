@@ -26,6 +26,7 @@ export class RobocompService {
         .then(event => {
           let json = event.json();
           if (json.success){
+            console.log('Robocomp.Service:getcurrentEvent json=' + JSON.stringify(json));
             this._currentEvent.next(json.data);
             res(json.data);
           } else {

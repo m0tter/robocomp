@@ -3,3 +3,4 @@ export const API_AUTH = API_SERVER + 'authenticate';
 export const API_USER = API_SERVER + 'users';
 export const API_EVENT = API_SERVER + 'roboevent';
 export const API_SCHOOL = API_SERVER + 'schools';
+export const API_RESULTS_ENTRY = API_SERVER + 'resultsentry';
