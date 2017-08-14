@@ -72,15 +72,25 @@ export class RoboEventAPI {
 
     this.router.put('/:id', bparser.json(), (req, res) => {
       let event = <RoboEvent>req.body;
+      
+      // set any other event isCurrent to false if the event being saved is the new isCurrent
       if(event.isCurrent) {
-        RoboEventModel.findOneAndUpdate({'isCurrent': true}, {$set: {'isCurrent':false}}, (err, doc) => {
+        RoboEventModel.find({'isCurrent': true}, (err, docs) => {
           if(err) this.errorHandler(err, res);
+          if(docs.length === 1) {
+            if(docs[0]._id != event._id) {
+              docs[0].isCurrent = false;
+              docs[0].save((saveErr, result) => {
+                if(saveErr) this.errorHandler(saveErr, res);
+              })
+            }
+          }
         });
       }
+
       RoboEventModel.findById(req.params.id, (err, docEvent) => {
         if(err) this.errorHandler(err, res);
         else {
-          console.log(event);
           if(event.name) docEvent.name = event.name;
           if(event.date) docEvent.date = event.date;
           if(event.competitions) docEvent.competitions = event.competitions;

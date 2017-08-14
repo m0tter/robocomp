@@ -68,21 +68,22 @@ export class EventDetailComponent implements OnInit {
                   name: '',
                   date: '',
                   competitions: [],
-                  isCurrent: true
+                  isCurrent: false
             }
             this.newRoboEvent = true;
             return Promise.resolve(roboEvent);
           }
       })
-    .subscribe(RoboEvent => {this.roboEvent = <RoboEvent>RoboEvent; this.copyRoboEvent(this.roboEvent);});
+    .subscribe(RoboEvent => {this.roboEvent = <RoboEvent>RoboEvent; this.copyRoboEvent(RoboEvent);});
    }
 
   copyRoboEvent(dbEvent: RoboEvent):void{
-    if(dbEvent.name) this.eventCopy.name = dbEvent.name;
-    if(dbEvent.date) this.eventCopy.date = dbEvent.date;
-    if(dbEvent.competitions) this.eventCopy.competitions = dbEvent.competitions;
-    this.eventCopy.isCurrent = dbEvent.isCurrent;
-    if(dbEvent._id) this.eventCopy._id = dbEvent._id;
+    //if(dbEvent.name) this.eventCopy.name = dbEvent.name;
+    //if(dbEvent.date) this.eventCopy.date = dbEvent.date;
+    //if(dbEvent.competitions) this.eventCopy.competitions = dbEvent.competitions;
+    //this.eventCopy.isCurrent = dbEvent.isCurrent;
+    //if(dbEvent._id) this.eventCopy._id = dbEvent._id;
+    this.eventCopy = <RoboEvent>JSON.parse(JSON.stringify(dbEvent));
     console.log(JSON.stringify(this.eventCopy));
   }
 

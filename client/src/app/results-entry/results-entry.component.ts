@@ -33,7 +33,6 @@ private _currentEvent: RoboEvent;
   setupNav() {
         this.navService.show();
         this._subManager.add(this.robocompservice.currentEvent.subscribe(res => this.buildNav(res)));
-        this._isNavSetup = true;
     }
 
     buildNav(event:RoboEvent):void{
