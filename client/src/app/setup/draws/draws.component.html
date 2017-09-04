@@ -1,3 +1,11 @@
-<p>
-  
-</p>
+<div>
+  <form class="dropdown">
+  <md-select placeholder="Select Competition" [(ngModel)]="selectedValue" name="c">
+    <md-option *ngFor="let c of currentEventComps" [value]="c.name">
+      {{c.name}}
+    </md-option>
+  </md-select>
+  <p> Selected Competition: {{selectedValue}} </p>
+</form>
+</div>
+
