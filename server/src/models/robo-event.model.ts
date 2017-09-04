@@ -3,7 +3,7 @@
 // date:    19/03/17
 
 import { Model, Schema, Document, model } from 'mongoose';
-import { RoboEventBase, Competition } from 'robocomp';
+import { RoboEventBase, CompetitionBase } from 'robocomp';
 
 let CompetitionSchema = new Schema({
   name: String,
@@ -18,6 +18,6 @@ let RoboEventSchema = new Schema({
   isCurrent: Boolean
 });
 
-export interface CompetitionDocument extends Competition, Document { }
+export interface CompetitionDocument extends CompetitionBase, Document { }
 export interface RoboEventDocument extends RoboEventBase, Document { }
 export const RoboEventModel = model<RoboEventDocument>('Events', RoboEventSchema);

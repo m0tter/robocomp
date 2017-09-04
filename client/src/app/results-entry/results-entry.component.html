@@ -1,17 +1,4 @@
 <div class="results-entry">
-    <select id = "myList" aria-placeholder="Team">
-      <option value = "1">one</option>
-      <option value = "2">two</option>
-      <option value = "3">three</option>
-      <option value = "4">four</option>
-    </select>
-  <div *ngIf="getCompType() === 1">
-    <input type="text" placeholder="Score" name="scoreInput"> 
-    <a md-button class="btn" (click)="saveInput()">Save</a>
-  </div>
-  <div *ngIf="getCompType() === 2">
-    <a md-button class="btn">Win</a>
-    <a md-button class="btn">Bad</a>
-    <a md-button class="btn" (click)="saveInput()">Save</a>
-  </div>
+  <router-outlet></router-outlet>
+  <div *ngIf="!_compSelected">Please select a competition from the menu</div>
 </div>

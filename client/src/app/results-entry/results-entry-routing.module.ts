@@ -5,7 +5,7 @@ import { ResultsEntryComponent } from './results-entry.component';
 
 const routes: Routes = [
   { path: '', component: ResultsEntryComponent },
-  
+  { path: ':id', component: ResultsEntryComponent }
 ]
 
 @NgModule({

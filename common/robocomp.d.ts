@@ -53,9 +53,13 @@ export enum CompetitionType {
   dance
 }
 
-export interface Competition {
+export interface CompetitionBase {
   name: string;
   type: CompetitionType;
+}
+
+export interface Competition extends CompetitionBase{
+  _id?: string;
 }
 
 export interface RoboEventBase {

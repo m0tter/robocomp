@@ -5,7 +5,7 @@ import "rxjs/add/operator/map";
 import 'rxjs/add/operator/toPromise'
 
 import { AuthenticationService } from '../services/authentication.service';
-import { CompBase, RoboEvent } from 'robocomp';
+import { RoboEvent, Competition } from 'robocomp';
 import { RobocompService } from '../services';
 import { API_RESULTS_ENTRY } from '../_api.paths';
 import { NavService } from '../services/nav.service';
